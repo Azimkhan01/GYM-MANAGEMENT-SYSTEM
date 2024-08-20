@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Vyne Gym - Membership Table</title>
+    <link rel="stylesheet" href="/public/css/view.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-bar">
+            <a href="/dashboard" class="back-link">Back to Home</a>
+        </nav>
+        <h1>The Vyne Gym - Membership Table</h1>
+        <div class="filter-container">
+            <label for="filter">Filter:</label>
+            <select id="filter" name="filter">
+                <option value="all">Show All</option>
+                <option value="expiry">Show Expiry</option>
+            </select>
+        </div>
+        <table id="membership-table">
+            <thead>
+                <tr>
+                    <th>Membership ID</th>
+                    <th>Name</th>
+                    <th>WhatsApp Number</th>
+                    <th>Gmail</th>
+                    <th>Membership Date</th>
+                    <th>Membership Duration</th>
+                    <th>Fees Paid</th>
+                    <th>Expiry Date</th>
+                </tr>
+            </thead>
+            <tbody id="table_body">
+                <!-- Rows will be inserted here dynamically -->
+            </tbody>
+        </table>
+
+        <!-- Form to Send Mail -->
+        <div class="form-container">
+            <form action="/member" method="POST">
+                <button type="submit" id="sendMail">Send Mail</button>
+                <p id="status" style="color: {{color}};">{{status}}</p>
+            </form>
+        </div>
+    </div>
+    <script src="/public/js/view.js"></script>
+</body>
+</html>

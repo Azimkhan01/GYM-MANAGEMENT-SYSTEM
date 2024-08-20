@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Vyne Gym - Membership Form</title>
+    <link rel="stylesheet" href="/public/css/insert.css">
+</head>
+<body>
+    <div class="form-container">
+        <a href="/dashboard" class="back-to-home">Back to Home</a>
+        <h1>The Vyne Gym - Membership Form</h1>
+        <form action="/insert" method="POST">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="whatsapp">WhatsApp Number:</label>
+                <input type="tel" id="whatsapp" name="whatsapp" required>
+            </div>
+ 
+            <div class="form-group">
+                <label for="gmail">Gmail:</label>
+                <input type="email" id="gmail" name="gmail" required>
+            </div>
+
+            <div class="form-group">
+                <label for="membership-date">Membership Date:</label>
+                <input type="date" id="membership-date" name="membership_date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="membership-duration">Membership Duration:</label>
+                <select id="membership-duration" name="membership_duration" required>
+                    <option value="1-month">1 Month</option>
+                    <option value="3-months">3 Months</option>
+                    <option value="6-months">6 Months</option>
+                    <option value="1-year">1 Year</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="fees-paid">Fees Paid:</label>
+                <input type="number" id="fees-paid" name="fees_paid" required>
+            </div>
+
+            <div class="form-group" id="data_status">
+                <p style="color:{{color}}">{{status}}</p>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" id="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    <script src="/public/js/insert.js"></script>
+</body>
+</html>
