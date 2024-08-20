@@ -6,7 +6,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .form-container {
@@ -15,7 +15,12 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 500px;
+    max-width: 700px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 h1 {
@@ -39,6 +44,7 @@ h1 {
 
 .form-group {
     margin-bottom: 15px;
+    width: 100%;
 }
 
 label {
@@ -52,9 +58,11 @@ input[type="tel"],
 input[type="email"],
 input[type="date"],
 input[type="number"],
+input[type="file"],
 select {
     width: 100%;
-    padding: 10px;
+    padding: 15px;  /* Increased padding for larger input area */
+    font-size: 18px;  /* Increased font size for better readability */
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
@@ -62,7 +70,8 @@ select {
 
 button {
     width: 100%;
-    padding: 12px;
+    padding: 15px;
+    font-size: 18px;
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -77,6 +86,7 @@ button:hover {
 
 @media (max-width: 480px) {
     input, select, button {
-        padding: 8px;
+        padding: 12px;
+        font-size: 16px;
     }
 }

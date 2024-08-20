@@ -5,6 +5,8 @@
  let membershipDate =document.getElementById("membership-date");
  let membershipDuration = document.getElementById("membership-duration");
  let feesPaid = document.getElementById("fees-paid");
+ let image = document.getElementById("image");
+ let offer = document.getElementById("offer");
 
 
 whatsapp.addEventListener("change",async (e)=>{
@@ -15,28 +17,30 @@ whatsapp.addEventListener("change",async (e)=>{
         let submit = document.getElementById("submit")
             submit.disabled = false;
         // console.log("running")
-      r.map((v)=>{
-        if(v["whatsapp"] == e.target.value)
+        for(i=0;i<r.length;i++)
         {
-         membershipId.value = v["id"];
-         name.value = v["name"];
-         gmail.value = v["gmail"];
-         membershipDate.value = v["membership_date"];
-         membershipDuration.value = v["membership_duration"];
-         feesPaid.value = v["fees_paid"];
-         let status = document.getElementById("status")
-         status.innerHTML = ``
-     let submit = document.getElementById("submit")
-         submit.disabled = false;
-         return
-        //  console.log("running");
-         
-        }else{
+            if(r[i]["whatsapp"] == e.target.value)
+            {
+                membershipId.value = r[i]["id"];
+                name.value = r[i]["name"];
+                gmail.value = r[i]["gmail"];
+                membershipDate.value = r[i]["membership_date"];
+                membershipDuration.value = r[i]["membership_duration"];
+                feesPaid.value = r[i]["fees_paid"];
+                offer.value = r[i]["offer"];
+                image.value = r[i]["image"];
+                let status = document.getElementById("status")
+                status.innerHTML = ``
             let submit = document.getElementById("submit")
+                submit.disabled = false;
+                return
+            }else{
+                let submit = document.getElementById("submit")
             submit.disabled = true;
             let status = document.getElementById("status")
             status.innerHTML = `<p style="color:red">No data found</p>`
+            }
         }
-      })
+      
     })
 })

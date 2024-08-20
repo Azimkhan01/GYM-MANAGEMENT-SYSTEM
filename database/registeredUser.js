@@ -34,6 +34,12 @@ const registeredSchema = new mongoose.Schema({
     },expiry:{
         type:String,
         trim:true
+    },offer:{
+        type:String,
+        trim:true,
+    },image:{
+        type:String,
+        trim:true
     }
 },
 {

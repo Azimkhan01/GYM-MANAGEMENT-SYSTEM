@@ -9,24 +9,24 @@ for(i=0;i<r.length;i++)
     if(r[i]["id"] == e.target.value)
     {
         let resultSection = document.getElementById("resultSection");
-        let div = document.createElement("div");
-        div.id = 'membershipDetails'
-        div.className = 'membershipDetails'
-        div.style.border = '2px solid black'
-        div.style.marginBottom = "10px"
-        div.innerHTML = `<p><strong>ID:</strong> <span id="id">${r[i]["id"]}</span></p>
+        
+      resultSection.innerHTML = `
+      <div id="membershipDetails" class="membershipDetails">
+      <img src="${r[i]["image"]}"  alt="${r[i]["name"]}" class="passport-image">
+      <p><strong>ID:</strong> <span id="id">${r[i]["id"]}</span></p>
         <p><strong>Name:</strong> <span id="name">${r[i]["name"]}</span></p>
                 <p><strong>Phone Number:</strong> <span id="phone">${r[i]["whatsapp"]}</span></p>
                 <p><strong>Duration:</strong> <span id="duration">${r[i]["membership_duration"]}</span></p>
                 <p><strong>Start Date:</strong> <span id="startDate">${r[i]["membership_date"]}</span></p>
-                <p><strong>Expiry Date:</strong> <span id="expiryDate">${r[i]["expiry"]}</span></p>`
-      resultSection.appendChild(div);
+                <p><strong>Expiry Date:</strong> <span id="expiryDate">${r[i]["expiry"]}</span></p></div>`
       return
     }else{
         console.log("not found")
+        let resultSection = document.getElementById("resultSection");
+        resultSection.innerHTML = '<p id="resultText">Search result will appear here...</p>'
         let resultText = document.getElementById("resultText")
         resultText.textContent = `${e.target.value} not found`
-        return 
+        
     }
 }
 

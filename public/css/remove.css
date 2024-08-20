@@ -77,3 +77,20 @@ h2 {
 .back-home a:hover {
     text-decoration: underline;
 }
+
+.passport-image {
+    width: 60px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    display: block;
+    margin: 10px auto; /* Center the image horizontally */
+}
+
+.membershipDetails {
+    text-align: center; /* Center-align text and image */
+    margin: 0 auto;
+    max-width: 300px; /* Limit the width of the membership details */
+}

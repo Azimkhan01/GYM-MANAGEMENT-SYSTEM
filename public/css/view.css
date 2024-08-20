@@ -5,8 +5,8 @@ body {
     padding: 0;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    align-items: flex-start; /* Align items at the top */
+    height: auto; /* Allow body height to grow with content */
 }
 
 .container {
@@ -16,7 +16,8 @@ body {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 1200px;
-    position: relative; /* Added for positioning child elements */
+    position: relative;
+    margin-top: 20px; /* Space for fixed nav-bar if needed */
 }
 
 h1 {
@@ -57,13 +58,13 @@ select {
     box-sizing: border-box;
 }
 
-table {
+#membership-table {
     width: 100%;
     border-collapse: collapse;
     overflow-x: auto;
 }
 
-table, th, td {
+#membership-table, th, td {
     border: 1px solid #ddd;
 }
 
@@ -83,6 +84,11 @@ tr:nth-child(even) {
 
 tr:hover {
     background-color: #ddd;
+}
+
+#membership-table-container {
+    max-height: 500px; /* Adjust as needed */
+    overflow-y: auto;
 }
 
 .form-container {
@@ -108,6 +114,24 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+/* Existing CSS */
+
+img.passport {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px; /* Optional: To give the image slightly rounded corners */
+    border: 1px solid #ccc; /* Optional: To add a border around the image */
+}
+
+/* Responsive adjustments for image */
+@media (max-width: 480px) {
+    td img.passport {
+        width: 40px;
+        height: 40px;
+    }
+}
+
 
 @media (max-width: 768px) {
     th, td {

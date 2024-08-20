@@ -27,21 +27,19 @@ function getExpiry(startDate, duration) {
     return expiryDate;
 }
 
-function generateRandomId() {
-    const randomNumber = Math.floor(Math.random() * 1000000); // Generate a random number
-    const randomId = `vyne-${randomNumber}`;
-    return randomId;
-}
+
 
 const handleInsert = async (req,res)=>{
-  
-    let {name,whatsapp,gmail,membership_date,membership_duration,fees_paid} =await  req.body;
+    
+    let {name,whatsapp,gmail,membership_date,membership_duration,fees_paid,offer} =await  req.body;
     let find = await membership.find({whatsapp:whatsapp});
     if(find != undefined || find != "")
     {
-        let id = await generateRandomId();
+        let id = await  membership.countDocuments({}) + 1;
+        id = "vyne-"+id;
+        image = `/public/image/${id}.jpeg`
         let expiry =await  getExpiry(membership_date,membership_duration);
-        let insertMember = await  membership.create({id:id,name,whatsapp,gmail,membership_date,membership_duration,fees_paid,expiry:expiry});
+        let insertMember = await  membership.create({id:id,name,whatsapp,gmail,membership_date,membership_duration,fees_paid,expiry:expiry,offer,image:image});
         if(insertMember)
         {
             main(name,membership_date,membership_duration,expiry,gmail,true);

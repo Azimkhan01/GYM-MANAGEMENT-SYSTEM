@@ -8,13 +8,14 @@ function isExpired(expiryDate) {
 }
 
 let sendMail = document.getElementById("sendMail");
-sendMail.style.backgroundColor = "tomato"
-sendMail.disabled = true
+sendMail.style.backgroundColor = "lightgreen"
+sendMail.disabled = false
 let tableBody = document.getElementById("table_body");
     fetch("http://127.0.0.1:8000/memberApi").then(data => data.json()).then((r)=>{
     r.map((v)=>{
      let tr = document.createElement("tr")
      tr.innerHTML = `   <td>${v["id"]}</td>
+                         <td><img src="${v["image"]}" alt="${v["name"]}" class="passport"></td> 
                         <td>${v["name"]}</td>
                         <td>${v["whatsapp"]}</td>
                         <td>${v["gmail"]}</td>
@@ -42,6 +43,7 @@ sendMail.disabled = true
     r.map((v)=>{
      let tr = document.createElement("tr")
      tr.innerHTML = `   <td>${v["id"]}</td>
+                        <td><img src="${v["image"]}" alt="${v["name"]}" class="passport"></td>
                         <td>${v["name"]}</td>
                         <td>${v["whatsapp"]}</td>
                         <td>${v["gmail"]}</td>
@@ -64,6 +66,7 @@ sendMail.disabled = true
         sendMail.style.backgroundColor = "lightgreen"
         let tr = document.createElement("tr")
         tr.innerHTML = `   <td>${v["id"]}</td>
+                           <td><img src="${v["image"]}" alt="${v["name"]}" class="passport"></td>
                            <td>${v["name"]}</td>
                            <td>${v["whatsapp"]}</td>
                            <td>${v["gmail"]}</td>
@@ -71,6 +74,7 @@ sendMail.disabled = true
                            <td>${v["membership_duration"]}</td>
                            <td>${v["fees_paid"]}</td>
                            <td>${v["expiry"]}</td>`
+                           
        tableBody.appendChild(tr);
     }
     });

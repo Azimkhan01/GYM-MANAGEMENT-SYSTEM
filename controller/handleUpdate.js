@@ -7,8 +7,12 @@ const handleUpdate =async (req,res)=>{
     let membership_duration = await req.body.membership_duration;
     let fees_paid = await req.body.fees_paid;
     let whatsapp = await req.body.whatsapp;
-let data =await  membership.updateOne({whatsapp:whatsapp},{name,gmail,membership_date,membership_duration,fees_paid});
-  if(data)
+    let offer = await req.body.offer;
+    let image = await req.body.image;
+    console.log(req.body)
+let data =await  membership.updateOne({whatsapp:whatsapp},{name:name,gmail:gmail,membership_date:membership_date,membership_duration:membership_duration,fees_paid:fees_paid,offer:offer,image:image});
+console.log(data)  
+if(data)
   {
     res.render("update",{
         color:'green',
