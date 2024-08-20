@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Membership</title>
+    <link rel="stylesheet" href="/public/css/remove.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Logo Section -->
+        <div class="logo">
+            <p>The Vyne GYM</p>
+        </div>
+
+        <h2>Delete Membership</h2>
+        
+        <!-- Search Section -->
+        <div class="search-section">
+            <form action="remove" method="post">
+                <input type="text" id="searchInput" name="id" value="vyne-" placeholder="Enter Vyne ID">
+                <button id="deleteButton">Delete Membership</button>
+            </form>
+        </div>
+
+        <!-- Search Result Section -->
+        <div id="resultSection" class="result-section">
+            <p id="resultText">Search result will appear here...</p>
+            <p id="resultText">{{status}}</p>
+        </div>
+
+        <!-- Back to Home Link -->
+        <div class="back-home">
+            <a href="/dashboard">Back to Home</a>
+        </div>
+    </div>
+
+    <script src="/public/js/remove.js"></script>
+</body>
+</html>
