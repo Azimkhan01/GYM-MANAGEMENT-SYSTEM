@@ -5,7 +5,11 @@ const memberApi =async (req,res)=>{
 let member  = await membership.find({});
 
 
-res.json(member);
+   await  res.json(member);
+
+    
+
+
 
 }
 

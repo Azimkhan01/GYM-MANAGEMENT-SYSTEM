@@ -9,14 +9,14 @@
  let offer = document.getElementById("offer");
 
 
-whatsapp.addEventListener("change",async (e)=>{
-    await fetch("http://127.0.0.1:8000/memberApi").then(data => data.json()).then((r)=>{
-        // console.log(r)
+whatsapp.addEventListener("change", (e)=>{
+     fetch("http://127.0.0.1:8000/memberApi").then(data => data.json()).then((r)=>{
+        
          let status = document.getElementById("status")
             status.innerHTML = ``
         let submit = document.getElementById("submit")
             submit.disabled = false;
-        // console.log("running")
+        
         for(i=0;i<r.length;i++)
         {
             if(r[i]["whatsapp"] == e.target.value)
