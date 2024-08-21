@@ -21,13 +21,13 @@ if(true)
         status:"Mail sended",
         color:"green"
     }
-    );
+    )
 }else{
     res.render("view",{
         status:"mail send ",
         color:"red"
     }
-    ); 
+    )
 }
 
 }

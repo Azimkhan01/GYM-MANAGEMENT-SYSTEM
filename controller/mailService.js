@@ -1,5 +1,5 @@
 const nodemailer = require("nodemailer");
-
+require("dotenv").config();
 
 
 // async..await is not allowed in global scope, must use a wrapper
@@ -269,16 +269,16 @@ async function main(name,date,duration,expiry,mail,type) {
     port: 465,
     secure: true, // Use `true` for port 465, `false` for all other ports
         auth: {
-          user: "eyephone15pro@gmail.com",
-          pass: "eaof hjpj oeah suzg",
+          user: process.env.email,
+          pass: process.env.emailPass,
         },
       });
   // send mail with defined transport object
   const info = await transporter.sendMail({
-    from: 'eyephone15pro@gmail.com', // sender address
+    from: process.env.email, // sender address
     to: mail, // list of receivers
-    subject: "Hello ✔", // Subject line
-    text: "Hello world?", // plain text body
+    subject: "Important Notice", // Subject line
+    text: "The Vyne Gym", // plain text body
     html: sendHTML, // html body
   });
 
