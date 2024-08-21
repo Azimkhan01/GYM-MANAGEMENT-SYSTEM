@@ -83,8 +83,39 @@ sendMail.disabled = true
 
 })
 
+document.getElementById("printButton").addEventListener("click", function() {
+    window.print();
+});
 
 
+// document.addEventListener("DOMContentLoaded", function() {
 
+//     const printButton = document.getElementById("printButton");
+
+    
+//     printButton.addEventListener("click", function() {
+        
+//         const tableContent = document.getElementById("membership-table").outerHTML;
+
+        
+//         const printWindow = window.open('', '', 'height=600,width=800');
+
+        
+//         printWindow.document.write('<html><head><title>Print Table</title>');
+
+        
+//         printWindow.document.write('<style>');
+//         printWindow.document.write('table { width: 100%; border-collapse: collapse; }');
+//         printWindow.document.write('th, td { border: 1px solid #000; padding: 10px; text-align: left; }');
+//         printWindow.document.write('</style>');
+//         printWindow.document.write('</head><body>');
+//         printWindow.document.write(tableContent);
+//         printWindow.document.write('</body></html>');
+//         printWindow.document.close();
+//         printWindow.focus();
+//         printWindow.print();
+//         printWindow.close();
+//     });
+// });
 
 
