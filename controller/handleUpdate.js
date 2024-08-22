@@ -9,9 +9,9 @@ const handleUpdate =async (req,res)=>{
     let whatsapp = await req.body.whatsapp;
     let offer = await req.body.offer;
     let image = await req.body.image;
-    console.log(req.body)
+    // console.log(req.body)
 let data =await  membership.updateOne({whatsapp:whatsapp},{name:name,gmail:gmail,membership_date:membership_date,membership_duration:membership_duration,fees_paid:fees_paid,offer:offer,image:image});
-console.log(data)  
+// console.log(data)  
 if(data)
   {
     res.render("update",{

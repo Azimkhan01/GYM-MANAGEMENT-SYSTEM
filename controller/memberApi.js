@@ -1,17 +1,9 @@
-const {membership} = require("../database/registeredUser");
+const { membership } = require("../database/registeredUser");
 
-const memberApi =async (req,res)=>{
+const memberApi = async (req, res) => {
+  let member = await membership.find({});
 
-let member  = await membership.find({});
+  await res.json(member);
+};
 
-
-   await  res.json(member);
-
-    
-
-
-
-}
-
-module.exports = {memberApi};
-
+module.exports = { memberApi };
