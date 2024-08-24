@@ -7,7 +7,9 @@ searchInput.addEventListener("input", (e) => {
         // console.log(e.target.value)
         if (r[i]["id"] == e.target.value) {
           let resultSection = document.getElementById("resultSection");
-
+          let deleteButton= document.getElementById("deleteButton")
+          deleteButton.disabled = false;
+          deleteButton.style.backgroundColor = "#444444"
           resultSection.innerHTML = `
       <div id="membershipDetails" class="membershipDetails">
       <img src="${r[i]["image"]}"  alt="${r[i]["name"]}" class="passport-image">
@@ -25,6 +27,9 @@ searchInput.addEventListener("input", (e) => {
             '<p id="resultText">Search result will appear here...</p>';
           let resultText = document.getElementById("resultText");
           resultText.textContent = `${e.target.value} not found`;
+          let deleteButton= document.getElementById("deleteButton")
+          deleteButton.disabled = true;
+          deleteButton.style.backgroundColor = "tomato"
         }
       }
     });

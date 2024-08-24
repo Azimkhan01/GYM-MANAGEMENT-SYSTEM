@@ -11,6 +11,14 @@
         <nav class="nav-bar">
             <a href="/dashboard" class="back-link">Back to Home</a>
         </nav>
+        <!-- Form to Send Mail -->
+        <div class="form-container">
+            <form action="/member" method="POST">
+                <button type="submit" id="sendMail">Send Mail</button>
+                <p id="status" style="color: {{color}};">{{status}}</p>
+            </form>
+        </div>
+        
         <h1>The Vyne Gym - Membership Table</h1>
         <div class="filter-container">
             <label for="filter">Filter:</label>
@@ -41,16 +49,8 @@
                 <!-- Add more demo rows as needed -->
             </tbody>
         </table>
-
-        <!-- Form to Send Mail -->
-        <div class="form-container">
-            <form action="/member" method="POST">
-                <button type="submit" id="sendMail">Send Mail</button>
-                <p id="status" style="color: {{color}};">{{status}}</p>
-            </form>
-        </div>
     </div>
     <script src="/public/js/view.js"></script>
-     <!-- New external script -->
+    <!-- New external script -->
 </body>
 </html>

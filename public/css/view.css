@@ -1,198 +1,307 @@
+/* Importing Interesting Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* General Body and Container Styling */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Align items at the top */
-    height: auto; /* Allow body height to grow with content */
+    background-color: #121212; /* Dark background for the body */
+    color: #e0e0e0; /* Light text color for contrast */
 }
-
-.print-button {
-    margin-bottom: 20px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.print-button:hover {
-    background-color: #0056b3;
-}
-
 
 .container {
-    background-color: #fff;
+    margin: 20px;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 1200px;
-    position: relative;
-    margin-top: 20px; /* Space for fixed nav-bar if needed */
+    background-color: #1e1e1e; /* Slightly lighter dark background for content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-}
-
+/* Navbar Styling */
 .nav-bar {
+    background: #1c1c1c; /* Darker grey background */
+    color: #e0e0e0; /* Light text color */
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the left */
 }
 
-.back-link {
-    color: #007bff;
+.nav-bar .back-link {
+    color: #03a9f4; /* Light blue accent color */
     text-decoration: none;
-    font-weight: bold;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px; /* Space between back link and button */
+}
+
+.nav-bar .back-link:hover {
+    color: #0288d1; /* Darker blue on hover */
+}
+
+/* Send Mail Button in Navbar */
+.nav-button {
+    background-color: #03a9f4; /* Light blue background */
+    color: #fff; /* White text */
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+    width: 100%; /* Full width for better alignment */
+}
+
+.nav-button:hover {
+    background-color: #0288d1; /* Darker blue on hover */
+}
+
+/* Header Styling */
+h1 {
+    color: #e0e0e0; /* Light text color */
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/* Filter Container Styling */
+.filter-container {
+    margin-bottom: 20px;
+    color: #e0e0e0; /* Light text color */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.filter-container label {
+    margin-bottom: 5px;
     font-size: 16px;
 }
 
-.back-link:hover {
-    text-decoration: underline;
-}
-
-.filter-container {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-label {
-    margin-right: 10px;
-    color: #555;
-}
-
-select {
-    padding: 10px;
-    border: 1px solid #ccc;
+.filter-container select {
+    background-color: #333; /* Dark grey background for select box */
+    color: #e0e0e0; /* Light text color */
+    border: 1px solid #444; /* Medium grey border */
+    padding: 8px;
     border-radius: 5px;
-    box-sizing: border-box;
+    font-size: 14px;
 }
 
-#membership-table {
+.filter-container select:hover {
+    background-color: #444; /* Slightly lighter grey on hover */
+}
+
+/* Print Button Styling */
+.print-button {
+    background-color: #03a9f4; /* Light blue background */
+    color: #fff; /* White text */
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.print-button:hover {
+    background-color: #0288d1; /* Darker blue on hover */
+}
+
+/* Table Styling */
+table {
     width: 100%;
     border-collapse: collapse;
-    overflow-x: auto;
 }
 
-#membership-table, th, td {
-    border: 1px solid #ddd;
+thead {
+    background-color: #333; /* Dark grey background for table header */
+    color: #e0e0e0; /* Light text color */
 }
 
 th, td {
+    border: 1px solid #444; /* Medium grey border */
     padding: 12px;
     text-align: left;
 }
 
+tbody tr:nth-child(even) {
+    background-color: #1e1e1e; /* Alternating row color */
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #2c2c2c; /* Slightly darker alternating row color */
+}
+
+tbody tr:hover {
+    background-color: #333; /* Highlight row on hover */
+}
+
 th {
-    background-color: #007bff;
-    color: white;
+    font-weight: 700;
 }
 
-tr:nth-child(even) {
-    background-color: #f2f2f2;
+/* Form Container Styling */
+.form-container {
+    margin-top: 20px;
 }
 
-tr:hover {
-    background-color: #ddd;
+#sendMail {
+    background-color: #03a9f4; /* Light blue background */
+    color: #fff; /* White text */
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
 }
 
-#membership-table-container {
-    max-height: 500px; /* Adjust as needed */
-    overflow-y: auto;
+#sendMail:hover {
+    background-color: #0288d1; /* Darker blue on hover */
+}
+
+#status {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+/* Existing CSS */
+.nav-bar {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+}
+
+.back-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
 }
 
 .form-container {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+    margin: 1rem 0;
+    text-align: center;
 }
 
-form {
+.form-container form {
     display: inline-block;
 }
 
-button {
-    padding: 10px 20px;
-    font-size: 16px;
+#sendMail{
+    background-color: #4CAF50;
     color: white;
-    background-color: #007bff;
     border: none;
-    border-radius: 5px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
     cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
 }
 
-button:hover {
-    background-color: #0056b3;
-}
-/* Existing CSS */
-
-img.passport {
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-    border-radius: 5px; /* Optional: To give the image slightly rounded corners */
-    border: 1px solid #ccc; /* Optional: To add a border around the image */
+#sendMail:hover {
+    background-color: #45a049;
 }
 
-/* Responsive adjustments for image */
-@media (max-width: 480px) {
-    td img.passport {
-        width: 40px;
-        height: 40px;
+/* Rest of the existing CSS */
+
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .container {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    .nav-bar {
+        padding: 12px;
+    }
+
+    .print-button,
+    #sendMail {
+        width: 100%;
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    table {
+        font-size: 16px;
+    }
+
+    th, td {
+        padding: 10px;
     }
 }
 
-
 @media (max-width: 768px) {
+    .container {
+        margin: 5px;
+        padding: 10px;
+    }
+
+    .nav-bar {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .nav-bar .back-link {
+        font-size: 14px;
+    }
+
+    .print-button,
+    #sendMail {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
     th, td {
         padding: 8px;
+    }
+
+    .filter-container {
+        align-items: center;
+    }
+
+    .filter-container select {
+        width: 100%;
         font-size: 14px;
     }
 }
 
 @media (max-width: 480px) {
+    .nav-bar {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .nav-bar .back-link {
+        font-size: 12px;
+    }
+
+    .print-button,
+    #sendMail {
+        padding: 8px;
+        font-size: 12px;
+    }
+
     table {
-        display: block;
-        width: 100%;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
+        font-size: 12px;
     }
 
     th, td {
-        display: block;
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    th {
-        position: absolute;
-        top: 0;
-        left: 0;
-        background-color: #007bff;
-        color: white;
-        text-align: left;
-    }
-
-    td {
-        position: relative;
-        padding-left: 50%;
-        text-align: left;
-    }
-
-    td::before {
-        content: attr(data-label);
-        position: absolute;
-        left: 0;
-        width: 50%;
-        padding-left: 10px;
-        white-space: nowrap;
-        font-weight: bold;
-        background-color: #f2f2f2;
+        padding: 6px;
     }
 }

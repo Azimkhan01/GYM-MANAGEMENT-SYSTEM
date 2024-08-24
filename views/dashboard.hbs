@@ -7,15 +7,34 @@
     <link rel="stylesheet" href="/public/css/dashboard.css">
 </head>
 <body>
+    <!-- Static Navbar Section -->
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <h1>Gym Management System</h1>
+            <h2 class="sponsor">The Vyne Gym</h2>
+        </div>
+        <ul class="navbar-links">
+            <li><a href="/member" class="link">View Membership</a></li>
+            <li><a href="/insert" class="link">Insert Member</a></li>
+            <li><a href="/update" class="link">Update Member</a></li>
+            <li><a href="/remove" class="link">Delete Member</a></li>
+        </ul>
+    </nav>
+
     <div class="container">
-        <h1>Gym Management System</h1>
-        <h2 class="sponsor"> The Vyne Gym</h2>
-        <div class="links">
-            <a href="/member" class="link">View Membership</a>
-            <a href="/insert" class="link">Insert Member</a>
-            <a href="/update" class="link">Update Member</a>
-            <a href="/remove" class="link">Delete Member</a>
+        <!-- Statistics Section -->
+        <div class="stats-container">
+            <div class="stats-box">
+                <h3>Total Members</h3>
+                <p id="totalMembers"></p>
+            </div>
+
+            <div class="stats-box">
+                <h3>Total Expiries</h3>
+                <p id="totalExpiries"></p>
+            </div>
         </div>
     </div>
+    <script src="/public/js/dashboard.js"></script>
 </body>
 </html>
