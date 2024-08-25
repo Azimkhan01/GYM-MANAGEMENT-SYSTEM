@@ -6,15 +6,19 @@ body {
     background-color: #121212; /* Dark background */
     color: #e0e0e0; /* Light text for contrast */
     display: flex;
+    flex-direction: row; /* Ensure body elements flow horizontally */
+    height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 .container {
     margin-top: 2%;
-    margin-left: 20%; /* Space for navbar */
-    max-width: calc(100% - 270px);
+    margin-left: 18%;
+    margin-right: 1.5%; /* Space between container and right edge */
+    width: calc(100% - 270px); /* Adjust to fill the rest of the space */
     padding: 20px;
     text-align: center;
-    background-color: #ffffff; /* Slightly lighter dark background */
+    background-color: #ffffff; /* White background */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     border-radius: 8px;
     transition: margin-left 0.3s ease; /* Smooth transition for margin */
@@ -33,6 +37,8 @@ body {
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
+    z-index: 1000; /* Ensure navbar is always on top */
+    overflow-y: auto; /* Add scroll if content overflows */
 }
 
 .navbar-logo h1 {
@@ -99,6 +105,7 @@ body {
     flex: 1;
     min-width: 200px; /* Ensures boxes are not too small */
     max-width: 300px;
+    margin-bottom: 20px;
 }
 
 #totalMembersBox {
@@ -153,18 +160,40 @@ body {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+
+/* Tablets and Small Desktops */
+@media (max-width: 1024px) {
     .container {
-        margin-left: 0;
-        max-width: 100%;
+        margin-right: 1.5%;
+        margin-left: 15%; /* Align with navbar width */
+        width: calc(100% - 270px); /* Fill remaining width */
+    }
+
+    .navbar {
+        width: 250px;
+        height: auto;
+    }
+}
+
+/* Large Mobile Phones and Tablets */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column; /* Stack navbar and container vertically */
+    }
+
+    .container {
+        margin-left: 15%;
+        margin-right: 1.5%;
+        width: 100%;
         padding: 20px;
     }
 
     .navbar {
         width: 100%;
         height: auto;
-        position: static;
+        position: relative;
         box-shadow: none;
+        padding-bottom: 0;
     }
 
     .navbar-links {
@@ -174,16 +203,17 @@ body {
     }
 
     .navbar-links li {
-        margin: 0;
+        margin-bottom: 10px;
     }
 
     .stats-container {
+        
         flex-direction: column;
         align-items: center;
     }
 
     .stats-box {
-        width: 90%;
+        width: 50%;
         max-width: none; /* Allow full width for smaller screens */
         margin-bottom: 1rem;
     }
@@ -194,12 +224,13 @@ body {
     }
 }
 
+/* Small Mobile Phones */
 @media (max-width: 480px) {
     .navbar-logo h1 {
         font-size: 1.5rem; /* Smaller font size for smaller screens */
     }
 
-    .navbar-logo h2 {
+    .navbar-logo .sponsor {
         font-size: 1rem; /* Adjust font size for smaller screens */
     }
 
@@ -209,5 +240,24 @@ body {
 
     .stats-box p {
         font-size: 1.5rem; /* Smaller font size for numbers */
+    }
+
+    .navbar-links a,
+    .action-button {
+        padding: 8px 16px; /* Smaller padding for links and buttons */
+    }
+
+    .stats-box {
+        width: 100%; /* Full width for very small screens */
+        padding: 15px;
+        margin-bottom: 1rem;
+    }
+
+    .container {
+        padding: 10px; /* Reduce padding for small screens */
+    }
+
+    .graph-placeholder {
+        height: 150px; /* Smaller placeholder height */
     }
 }

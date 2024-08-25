@@ -12,7 +12,7 @@ require('dotenv').config();
 app.use("/public",express.static(path.join(__dirname,"/public")));
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(helmet());
+// app.use(helmet());
 app.use(cookieParser());
 app.use("/",router);
 
