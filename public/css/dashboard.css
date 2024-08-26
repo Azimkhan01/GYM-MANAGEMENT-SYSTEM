@@ -21,7 +21,9 @@ body {
     background-color: #ffffff; /* White background */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     border-radius: 8px;
-    transition: margin-left 0.3s ease; /* Smooth transition for margin */
+    overflow-y: auto;
+    transition: margin-left 0.3s ease;
+     /* Smooth transition for margin */
 }
 
 /* Navbar Styling */
@@ -159,6 +161,83 @@ body {
     color: #888; /* Placeholder text color */
 }
 
+#myChart2,#myChart,#myChart3{
+    margin-top: 8%;
+    margin-left: 25%;
+}
+
+table {
+    color: #292929;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    background-color: #ffffff; /* White background for the table */
+    overflow-x: auto; /* Add horizontal scroll for small screens */
+}
+th, td {
+    padding: 12px 15px;
+    border: 1px solid #dcdcdc; /* Light grey border */
+    text-align: left;
+    white-space: nowrap; /* Prevent text wrapping */
+}
+th {
+    background-color: #6a0dad; /* Violet header background */
+    color: #ffffff; /* White text color for header */
+}
+tr:nth-child(even) {
+    background-color: #f4f0fc; /* Light violet for even rows */
+}
+tr:hover {
+    background-color: #e6e0f0; /* Lighter violet for hover effect */
+}
+@media (max-width: 768px) {
+    th, td {
+        padding: 8px 10px; /* Adjust padding for smaller screens */
+        font-size: 14px; /* Reduce font size for better fit */
+    }
+    table {
+        font-size: 14px; /* Adjust table font size */
+    }
+}
+@media (max-width: 480px) {
+    table {
+        width: 100%;
+        display: block; /* Enable block display to handle small screens */
+        overflow-x: auto; /* Horizontal scroll for very small screens */
+    }
+    th, td {
+        display: block;
+        text-align: right;
+        border: none; /* Remove border for block elements */
+    }
+    th {
+        background-color: #6a0dad; /* Violet background for header */
+        color: #ffffff; /* White text color */
+        padding: 10px;
+        text-align: left; /* Align header text to the left */
+    }
+    td {
+        position: relative;
+        padding: 10px 0;
+        border-top: 1px solid #dcdcdc; /* Add border on top for separation */
+        text-align: left; /* Align text to the left */
+    }
+    td::before {
+        content: attr(data-label); /* Display data label for each cell */
+        position: absolute;
+        left: 0;
+        width: 40%; /* Label width */
+        padding-left: 10px;
+        font-weight: bold;
+        background-color: #6a0dad; /* Violet background for labels */
+        color: #ffffff; /* White text color */
+        top: 0;
+        height: 100%;
+        line-height: 2em; /* Center text vertically */
+        white-space: nowrap; /* Prevent text wrapping */
+    }
+}
 /* Responsive Design */
 
 /* Tablets and Small Desktops */
