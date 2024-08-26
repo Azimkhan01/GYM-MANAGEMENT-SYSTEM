@@ -1,4 +1,7 @@
-const insert = (req,res)=>{
+
+
+const insert = async (req,res)=>{
+    
     res.render("insert")
 }
 

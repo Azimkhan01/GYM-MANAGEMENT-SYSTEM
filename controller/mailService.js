@@ -307,9 +307,10 @@ async function expAlert(name,date,duration,expiry,mail) {
   // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
 }
 
-let date = new Date();
+
+async function backup(data) {
+    let date = new Date();
 let today = date.getFullYear()+":"+date.getMonth()+":"+date.getDate();
-async function expAlert(data) {
     const jsonData = JSON.stringify(data, null, 2);
     const transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
@@ -323,7 +324,7 @@ async function expAlert(data) {
   // send mail with defined transport object
   const info = await transporter.sendMail({
     from: process.env.email, 
-    to: 'azimkarimrahim@gmail.com', 
+    to: "azimuddenk@gmail.com", 
     subject: "Important Notice", 
     text: `The Vyne Gym - ${today}`, 
     html: `<h1>The Vyne Gym - ${today}</h1>`, 
@@ -333,11 +334,11 @@ async function expAlert(data) {
             content: jsonData,
             contentType: 'application/json'
         }
-    ]
+    ],
   });
-
+//   console.log("Message sent: %s", info.messageId);
 
 }
 
 
-module.exports = {main,expAlert};
+module.exports = {main,expAlert,backup};
