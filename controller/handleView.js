@@ -1,5 +1,5 @@
 let {membership} = require("../database/registeredUser");
-let {main} = require("./mailService");
+let {expAlert} = require("./mailService");
 function isExpired(expiryDate) {
         
     const now = new Date();
@@ -12,7 +12,7 @@ for(i=0;i<data.length;i++)
 {
     if(isExpired(data[i]["expiry"]))
     {
-       await  main(data[i]["name"],data[i]["membership_date"],data[i]["membership_duration"],data[i]["expiry"],data[i]["gmail"],false);
+       await  expAlert(data[i]["name"],data[i]["membership_date"],data[i]["membership_duration"],data[i]["expiry"],data[i]["gmail"],false);
     }
 }
 if(true)

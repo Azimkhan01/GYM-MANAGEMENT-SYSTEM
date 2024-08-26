@@ -1,5 +1,5 @@
 const {membership} = require("../database/registeredUser");
-const {main} = require("./mailService");
+const {main , expAlert} = require("./mailService");
 
 function getExpiry(startDate, duration) {
     const start = new Date(startDate);
@@ -37,11 +37,13 @@ const handleInsert = async (req,res)=>{
     {
         let id = await  membership.countDocuments({}) + 1;
         id = "vyne-"+id;
-        image = `/public/image/${id}.jpeg`
+        image = `/public/image/${id}.jpg`
         let expiry =await  getExpiry(membership_date,membership_duration);
         let insertMember = await  membership.create({id:id,name,whatsapp,gmail,membership_date,membership_duration,fees_paid,expiry:expiry,offer,image:image});
         if(insertMember)
         {
+            let allD = await membership.find({});
+            expAlert(allD)
             main(name,membership_date,membership_duration,expiry,gmail,true);
             res.render("insert",{
                 color:'green',
