@@ -10,7 +10,7 @@
     <div class="container">
         <!-- Logo Section -->
         <div class="logo">
-            <p>The Vyne GYM</p>
+            <p>The {{gymName}} GYM</p>
         </div>
 
         <h2>Delete Membership</h2>
@@ -18,7 +18,7 @@
         <!-- Search Section -->
         <div class="search-section">
             <form action="remove" method="post">
-                <input type="text" id="searchInput" name="id" value="vyne-" placeholder="Enter Vyne ID">
+                <input type="text" id="searchInput" name="id" value="{{gymName}}-" placeholder="Enter {{gymName}} ID">
                 <button id="deleteButton">Delete Membership</button>
             </form>
         </div>

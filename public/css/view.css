@@ -10,6 +10,31 @@ body {
     color: #e0e0e0; /* Light text color for contrast */
 }
 
+/* Add this CSS to your existing stylesheet */
+
+/* Styling for the top information container */
+.top-info-container {
+    margin-top: 2%;
+    margin-left: 10%;
+    height: 50px;
+    width: 80%;
+    overflow:auto;
+    background-color: #1c1c1c; /* Darker grey background to match theme */
+    color: #03a9f4; /* Light blue text color */
+    padding: 10px 20px;
+    text-align: center; /* Center align the text */
+    font-size: 20px; /* Adjust font size */
+    font-weight: 500; /* Slightly bold for emphasis */
+    margin-bottom: 20px; /* Space below the top info container */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4); /* Subtle shadow effect */
+    border-radius: 8px;
+}
+
+.top-info-container p {
+    margin: 0; /* Remove default paragraph margins */
+}
+
+
 .container {
     margin: 20px;
     padding: 20px;

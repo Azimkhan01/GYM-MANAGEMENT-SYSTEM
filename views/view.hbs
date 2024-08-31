@@ -3,14 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Vyne Gym - Membership Table</title>
+    <title>The {{gymName}} Gym - Membership Table</title>
     <link rel="stylesheet" href="/public/css/view.css">
 </head>
 <body>
+    <!-- New div at the top for displaying the comma-separated number -->
+    <div class="top-info-container">
+        <div ><p height:"30%" id="commaNumber">Click On Show Expiry Membership</p></div>
+    </div>
+    <div id="copy" style="display:flex;justify-content:center">
+         <button style="margin-top: 2%;" class="print-button" onclick="copyIt()">Copy</button>
+         </div>
+
     <div class="container">
         <nav class="nav-bar">
             <a href="/dashboard" class="back-link">Back to Home</a>
         </nav>
+
         <!-- Form to Send Mail -->
         <div class="form-container">
             <form action="/member" method="POST">
@@ -19,7 +28,7 @@
             </form>
         </div>
         
-        <h1>The Vyne Gym - Membership Table</h1>
+        <h1>The {{gymName}} Gym - Membership Table</h1>
         <div class="filter-container">
             <label for="filter">Filter:</label>
             <select id="filter" name="filter">
@@ -28,8 +37,11 @@
             </select>
         </div>
         
-        <!-- Print Button with ID -->
-        <button id="printButton" class="print-button">Print Table</button>
+        <!-- Expiry and Print Buttons -->
+        <div class="button-container">
+            <button id="printButton" class="print-button">Print Table</button>
+            <button id="expiryButton" class="filter-button print-button" onclick="getExpiredList()">Show Expired Memberships</button>
+        </div>
 
         <table id="membership-table">
             <thead>

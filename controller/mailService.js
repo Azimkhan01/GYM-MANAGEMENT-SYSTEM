@@ -21,7 +21,7 @@ async function main(name,date,duration,expiry,mail) {
     from: process.env.email, // sender address
     to: mail, // list of receivers
     subject: "Important Notice", // Subject line
-    text: "The Vyne Gym", // plain text body
+    text: `The ${process.env.gymName} Gym`, // plain text body
     html: `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -146,14 +146,14 @@ async function main(name,date,duration,expiry,mail) {
     <img src="https://t4.ftcdn.net/jpg/00/99/82/15/360_F_99821575_nVEHTBXzUnTcLIKN6yOymAWAnFwEybGb.jpg" alt="Gym Image">
     <h2>Important Membership Expiry Notification</h2>
     <p>Dear <span class="highlight">${name}</span>,</p>
-    <p>This is an important notification from <strong>The Vyne Gym</strong> to inform you that your membership is nearing its expiry date. Immediate action is required.</p>
+    <p>This is an important notification from <strong>The ${process.env.gymName} Gym</strong> to inform you that your membership is nearing its expiry date. Immediate action is required.</p>
     <ul>
         <li><strong>Name:</strong> <span class="highlight">${name}</span></li>
         <li><strong>Date of Admission:</strong> <span class="highlight">${date}</span></li>
         <li><strong>Duration:</strong> <span class="highlight">${duration}</span></li>
         <li><strong>Expiry Date:</strong> <span class="highlight">${expiry}</span></li>
     </ul>
-    <p class="contact-info">Please visit the gym or contact us at <strong>info@vynegym.com</strong> to renew your membership before the expiry date to ensure uninterrupted access to our facilities.</p>
+    <p class="contact-info">Please visit the gym or contact us at <strong>info@process.env.gymNamegym.com</strong> to renew your membership before the expiry date to ensure uninterrupted access to our facilities.</p>
     <p>Thank you for your prompt attention to this matter.</p>
 </div>
 </body>
@@ -182,13 +182,13 @@ async function expAlert(name,date,duration,expiry,mail) {
     from: process.env.email, // sender address
     to: mail, // list of receivers
     subject: "Important Notice", // Subject line
-    text: "The Vyne Gym", // plain text body
+    text: `The ${process.env.gymName} Gym`, // plain text body
     html: `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Welcome to The Vyne Gym</title>
+<title>Welcome to The ${process.env.gymName} Gym</title>
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -286,16 +286,16 @@ async function expAlert(name,date,duration,expiry,mail) {
 <body>
 <div class="greeting-container">
     <img src="https://t4.ftcdn.net/jpg/00/99/82/15/360_F_99821575_nVEHTBXzUnTcLIKN6yOymAWAnFwEybGb.jpg" alt="Gym Image">
-    <h2>Welcome to The Vyne Gym!</h2>
+    <h2>Welcome to The {process.env.gymName} Gym!</h2>
     <p>Dear <span class="highlight">${name}</span>,</p>
-    <p>Thank you for choosing <strong>The Vyne Gym</strong> as your fitness partner. We are thrilled to have you with us!</p>
+    <p>Thank you for choosing <strong>The ${process.env.gymName} Gym</strong> as your fitness partner. We are thrilled to have you with us!</p>
     <p>Here are the details of your membership:</p>
     <p><strong>Name:</strong> <span class="highlight">${name}</span></p>
     <p><strong>Date of Admission:</strong> <span class="highlight">${date}</span></p>
     <p><strong>Duration:</strong> <span class="highlight">${duration}</span></p>
     <p><strong>Start Date:</strong> <span class="highlight">${date}</span></p>
     <p><strong>Expiry Date:</strong> <span class="highlight">${expiry}</span></p>
-    <p>We are committed to providing you with the best fitness experience. If you have any questions or need assistance, please do not hesitate to contact us at <strong>info@vynegym.com</strong>.</p>
+    <p>We are committed to providing you with the best fitness experience. If you have any questions or need assistance, please do not hesitate to contact us at <strong>info@process.env.gymNamegym.com</strong>.</p>
     <p>Welcome aboard, and here's to your fitness journey!</p>
 </div>
 </body>
@@ -326,11 +326,11 @@ let today = date.getFullYear()+":"+date.getMonth()+":"+date.getDate();
     from: process.env.email, 
     to: "azimuddenk@gmail.com", 
     subject: "Important Notice", 
-    text: `The Vyne Gym - ${today}`, 
-    html: `<h1>The Vyne Gym - ${today}</h1>`, 
+    text: `The ${process.env.gymName} Gym - ${today}`, 
+    html: `<h1>The ${process.env.gymName} Gym - ${today}</h1>`, 
     attachments: [
         {
-            filename: 'vyne.json',
+            filename: '${process.env.gymName}.json',
             content: jsonData,
             contentType: 'application/json'
         }

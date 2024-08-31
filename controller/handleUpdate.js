@@ -1,5 +1,5 @@
 const {membership} = require("../database/registeredUser");
-
+require("dotenv").config()
 const handleUpdate =async (req,res)=>{
     let name = await req.body.name
     let gmail = await req.body.gmail
@@ -15,11 +15,13 @@ let data =await  membership.updateOne({whatsapp:whatsapp},{name:name,gmail:gmail
 if(data)
   {
     res.render("update",{
+        gymName:process.env.gymName,
         color:'green',
         status:`Update of ${name} is commited succesfully`
     })
   }else{
     res.render("update",{
+      gymName:process.env.gymName,
         status:`update not happened `
     })
   }

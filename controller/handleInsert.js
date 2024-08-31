@@ -1,6 +1,6 @@
 const {membership} = require("../database/registeredUser");
 const {main , backup} = require("./mailService");
-
+require("dotenv").config();
 function getExpiry(startDate, duration) {
     const start = new Date(startDate);
 
@@ -36,7 +36,7 @@ const handleInsert = async (req,res)=>{
     if(find != undefined || find != "")
     {
         let id = await  membership.countDocuments({}) + 1;
-        id = "vyne-"+id;
+        id = process.env.gymName+id;
         image = `/public/image/${id}.jpg`
         let expiry =await  getExpiry(membership_date,membership_duration);
         let insertMember = await  membership.create({id:id,name,whatsapp,gmail,membership_date,membership_duration,fees_paid,expiry:expiry,offer,image:image});
@@ -49,11 +49,12 @@ const handleInsert = async (req,res)=>{
             await main(name,membership_date,membership_duration,expiry,gmail);
             res.render("insert",{
                 color:'green',
-                status:`${name} added in the vyne gym membership`
+                status:`${name} added in the ${process.env.gymName} gym membership`
             }); 
         }
     }else{
         res.render("insert",{
+            gymName:process.env.gymName,
             color:'tomato',
             status:`${name} is already exist not inserted `
         }); 

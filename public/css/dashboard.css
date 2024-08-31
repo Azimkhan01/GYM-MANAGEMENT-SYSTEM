@@ -3,7 +3,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #121212; /* Dark background */
+    background-color: #4f4f4f; /* Dark background */
     color: #e0e0e0; /* Light text for contrast */
     display: flex;
     flex-direction: row; /* Ensure body elements flow horizontally */
@@ -18,7 +18,7 @@ body {
     width: calc(100% - 270px); /* Adjust to fill the rest of the space */
     padding: 20px;
     text-align: center;
-    background-color: #ffffff; /* White background */
+    background-color: #2c2a2a; /* White background */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     border-radius: 8px;
     overflow-y: auto;

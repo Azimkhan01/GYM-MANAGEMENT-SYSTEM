@@ -1,4 +1,4 @@
-
+require("dotenv").config();
 
 const dashboard = async (req,res)=>{
         let cookie = req.cookies["status"];
@@ -6,7 +6,9 @@ const dashboard = async (req,res)=>{
         if(cookie)
         {
             
-            res.render("dashboard")
+            res.render("dashboard",{
+                gymName:process.env.gymName
+            })
         }else{
             res.redirect("/");
         }

@@ -1,5 +1,6 @@
 let {membership} = require("../database/registeredUser");
 let {expAlert,backup} = require("./mailService");
+require("dotenv").config();
 function isExpired(expiryDate) {
         
     const now = new Date();
@@ -19,12 +20,14 @@ if(true)
 {
    
     res.render("view",{
+        gymName:process.env.gymName,
         status:"Mail sended",
         color:"green"
     }
     )
 }else{
     res.render("view",{
+        gymName:process.env.gymName,
         status:"mail send ",
         color:"red"
     }

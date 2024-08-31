@@ -49,11 +49,11 @@ fetch("http://127.0.0.1:8000/memberApi")
     .then(data => data.json())
     .then(r => {
         let totalMembers = document.getElementById("totalMembers");
-        totalMembers.innerHTML = r.length;
+        totalMembers.innerHTML = "🪪"+r.length;
 
         const expiredMemberships = getExpiredMemberships(r);
         let totalExpiries = document.getElementById("totalExpiries");
-        totalExpiries.innerHTML = expiredMemberships.length;
+        totalExpiries.innerHTML = "🕰️"+expiredMemberships.length;
 
         const totalPrice = document.getElementById("totalPrice")
          totalPrice.innerHTML = `********`
@@ -174,22 +174,56 @@ for(i=0;i<r.length;i++)
           
         ];
         console.log(r[0])
-        new Chart("myChart2", {
-          type: "doughnut",
-          data: {
-            labels: xValues,
-            datasets: [{
-              backgroundColor: DarColors,
-              data: yValues
-            }]
-          },
-          options: {
-            title: {
-              display: true,
-              text: "Membership duration"
+        // Create a glowing effect plugin for doughnut chart with purple glow
+Chart.plugins.register({
+    beforeDraw: function(chartInstance) {
+        const ctx = chartInstance.chart.ctx;
+        ctx.save();
+
+        chartInstance.data.datasets.forEach(function (dataset, i) {
+            const meta = chartInstance.getDatasetMeta(i);
+            if (!meta.hidden) {
+                meta.data.forEach(function (element) {
+                    ctx.save();
+                    ctx.shadowColor = "rgba(128, 0, 128, 0.8)"; // Purple glow color
+                    ctx.shadowBlur = 25; // Amount of glow
+                    ctx.shadowOffsetX = 0;
+                    ctx.shadowOffsetY = 0;
+
+                    // Drawing the glowing effect for each segment
+                    ctx.beginPath();
+                    ctx.arc(element._model.x, element._model.y, element._model.outerRadius, element._model.startAngle, element._model.endAngle);
+                    ctx.arc(element._model.x, element._model.y, element._model.innerRadius, element._model.endAngle, element._model.startAngle, true);
+                    ctx.closePath();
+                    ctx.fillStyle = element._model.backgroundColor;
+                    ctx.fill();
+                    ctx.restore();
+                });
             }
-          }
         });
+
+        ctx.restore();
+    }
+});
+
+// Configuration for doughnut chart with glowing effect
+new Chart("myChart2", {
+    type: "doughnut",
+    data: {
+        labels: xValues,
+        datasets: [{
+            backgroundColor: DarColors,
+            data: yValues
+        }]
+    },
+    options: {
+        title: {
+            display: true,
+            text: "Membership duration"
+        }
+    }
+});
+
 
         const pValues = [1,2,3,4,5,6,7,8,9,10,11,12];
         let  qValues =[]
@@ -242,13 +276,44 @@ const xyValues = pValues.map((p, index) => {
   return { x: p, y: qValues[index] };
 });
 
+// Create a glowing effect plugin for scatter chart
+Chart.plugins.register({
+    beforeDraw: function(chartInstance) {
+        const ctx = chartInstance.chart.ctx;
+        ctx.save();
+
+        chartInstance.data.datasets.forEach(function(dataset, i) {
+            const meta = chartInstance.getDatasetMeta(i);
+            if (!meta.hidden) {
+                meta.data.forEach(function(element) {
+                    ctx.save();
+                    ctx.shadowColor = "rgba(0, 0, 255, 0.8)"; // Color of the glow
+                    ctx.shadowBlur = 10; // Amount of glow
+                    ctx.shadowOffsetX = 0;
+                    ctx.shadowOffsetY = 0;
+
+                    // Drawing the glowing circle
+                    ctx.beginPath();
+                    ctx.arc(element._model.x, element._model.y, element._model.radius, 0, Math.PI * 2, false);
+                    ctx.fillStyle = element._model.backgroundColor;
+                    ctx.fill();
+                    ctx.restore();
+                });
+            }
+        });
+
+        ctx.restore();
+    }
+});
+
+// Configuration for scatter chart with glowing effect
 new Chart("myChart3", {
     type: "scatter",
     data: {
         datasets: [{
             pointRadius: 4,
-            pointBackgroundColor: "rgb(0,0,255)",
-            data: xyValues
+            pointBackgroundColor: "rgb(0,0,255)", // Color of the points
+            data: xyValues // Data for scatter points
         }]
     },
     options: {
