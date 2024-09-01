@@ -22,6 +22,23 @@
     </nav>
 
     <div class="container">
+        <!-- WhatsApp Reminder Button at the Top -->
+        <div  class="whatsapp-reminder-container">
+            <p id="reminderDisplay">Click on below button </p>
+        </div>
+        
+        <div class="whatsapp-reminder-container">
+            <button id="getWhatsappReminder" class="whatsapp-button">Get Reminder via WhatsApp</button>
+            <button id="copy" style="background-color: rgb(41, 39, 39);margin-left:10px" onclick="copyIt()"  class="whatsapp-button">copy</button>
+        </div>
+
+        <!-- Send Reminder Button -->
+        <div class="reminder-button-container">
+            <form action="/dashboard" method="post">
+                <button id="sendReminderButton" type="submit" class="action-button">Send Reminder</button>
+            </form>
+        </div>
+
         <!-- Statistics Section -->
         <div class="stats-container">
             <div class="stats-box">
@@ -29,7 +46,7 @@
                 <p id="totalMembers"></p>
             </div>
             <div class="stats-box">
-                <div><h3>Total Fees_paid</h3><span style="color: black;">Click here : </span><span id="showFess" style="color: black;">Show revenue</span></div>
+                <div><h3>Total Fees Paid</h3><span style="color: black;">Click here: </span><span id="showFess" style="color: black;">Show revenue</span></div>
                 <p id="totalPrice"></p>
             </div>
             <div class="stats-box">
@@ -37,10 +54,12 @@
                 <p id="totalExpiries"></p>
             </div>
         </div>
+
+        <!-- Other content and charts -->
         <div>
             <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
         </div>
-         <div>
+        <div>
             <canvas id="myChart2" style="width:100%;max-width:700px"></canvas>
         </div>
         <div>
@@ -50,28 +69,36 @@
             <h2 style="color: rgb(116, 30, 255);" id="entry">Last 5 Membership Entries</h2>
             <label for="entryCount" style="color: #6a0dad; font-size: 16px;">Select number of entries to display:</label>
             <input type="number" id="entryCount">
-<table id="membershipTable">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>WhatsApp</th>
-            <th>Membership Date</th>
-            <th>Expiry Date</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- Data will be inserted here -->
-    </tbody>
-</table>
+            <table id="membershipTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>WhatsApp</th>
+                        <th>Membership Date</th>
+                        <th>Expiry Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be inserted here -->
+                </tbody>
+            </table>
         </div>
     </div>
- <script
-src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
-</script>
+
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="/public/js/dashboard.js"></script>
-    
-    
+    <script>
+        
+        document.getElementById('sendReminderButton').addEventListener('click', function() {
+            document.getElementById("sendReminderButton").style.backgroundColor = 'tomato'
+            document.getElementById("sendReminderButton").innerHTML = "Sending reminder please wait do not go back ...."
+           
+        });
+
+       
+    </script>
 </body>
 </html>

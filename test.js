@@ -1,3 +1,5 @@
+require("dotenv").config()
+
 function getRandomDate(startDate, endDate) {
     const start = new Date(startDate);
     const end = new Date(endDate);
@@ -35,7 +37,7 @@ for (let i = 1; i <= 1000; i++) {
     const image = '/public/image/vyne-1.jpg';
 
     const entry = {
-        id: `vyne-${i}`,
+        id: `${process.env.gymName}-${i}`,
         name: `Name ${i}`,
         whatsapp: `7${Math.floor(Math.random() * 1000000000)}`,
         gmail: `user${i}@example.com`,

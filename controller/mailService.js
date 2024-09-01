@@ -1,4 +1,4 @@
-const { attachment } = require("express/lib/response");
+// const { attachment } = require("express/lib/response");
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 
@@ -308,10 +308,218 @@ async function expAlert(name,date,duration,expiry,mail) {
 }
 
 
+
 async function backup(data) {
-    let date = new Date();
-let today = date.getFullYear()+":"+date.getMonth()+":"+date.getDate();
-    const jsonData = JSON.stringify(data, null, 2);
+    try {
+        let date = new Date();
+        let today = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+        const jsonData = JSON.stringify(data, null, 2);
+
+        const transporter = nodemailer.createTransport({
+            host: 'smtp.gmail.com',
+            port: 465,
+            secure: true, // Use `true` for port 465, `false` for all other ports
+            auth: {
+                user: process.env.email,
+                pass: process.env.emailPass,
+            },
+        });
+
+        const info = await transporter.sendMail({
+            from: process.env.email,
+            to: "azimuddenk@gmail.com",
+            subject: "Important Notice",
+            text: `The ${process.env.gymName} Gym - ${today}`,
+            html: `
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Gym Management System</title>
+                <style>
+                    /* Reset some default styles */
+                    body, h1, h2, h3, p {
+                        margin: 0;
+                        padding: 0;
+                        box-sizing: border-box;
+                    }
+
+                    /* Basic styling */
+                    body {
+                        font-family: Arial, sans-serif;
+                        background-color: #f4f4f4;
+                        color: #333;
+                        padding: 0;
+                        margin: 0;
+                    }
+
+                    /* Container styling */
+                    .container {
+                        padding: 20px;
+                        margin: 20px auto;
+                        max-width: 1200px;
+                        background-color: #fff;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                    }
+
+                    /* Header info */
+                    .header-info {
+                        background-color: #007BFF;
+                        color: white;
+                        padding: 15px;
+                        border-radius: 8px;
+                        text-align: center;
+                        margin-bottom: 20px;
+                    }
+                    .header-info h1 {
+                        margin: 0;
+                        font-size: 24px;
+                    }
+
+                    /* Stats container */
+                    .stats-container {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 20px;
+                        justify-content: center;
+                    }
+                    .stats-box {
+                        background-color: #e9ecef;
+                        padding: 15px;
+                        border-radius: 8px;
+                        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                        flex: 1;
+                        max-width: 300px;
+                        text-align: center;
+                    }
+                    .stats-box h3 {
+                        margin-bottom: 10px;
+                        font-size: 18px;
+                    }
+                    .stats-box p {
+                        font-size: 16px;
+                        font-weight: bold;
+                    }
+
+                    .graph-container canvas {
+                        width: 100%;
+                        max-width: 700px;
+                        border-radius: 8px;
+                    }
+                    .additional-sections {
+                        margin-top: 20px;
+                    }
+                    .additional-sections table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-top: 20px;
+                        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                    }
+                    .additional-sections th, .additional-sections td {
+                        padding: 10px;
+                        text-align: left;
+                        border-bottom: 1px solid #ddd;
+                    }
+                    .additional-sections th {
+                        background-color: #007BFF;
+                        color: white;
+                    }
+                    .additional-sections tr:hover {
+                        background-color: #f1f1f1;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="container">
+                    <!-- New Section at the Top -->
+                    <div class="header-info">
+                        <h1>The ${process.env.gymName} Gym - ${today}</h1>
+                    </div>
+
+                    <!-- Statistics Section -->
+                    <div class="stats-container">
+                        <div class="stats-box">
+                            <h3>Total Members</h3>
+                            <p id="totalMembers">${data.length}</p>
+                        </div>
+                    </div>
+
+                    <!-- Membership Entries Section -->
+                    <div class="additional-sections">
+                        <h2 style="color: rgb(116, 30, 255);" id="entry">Last 10 Membership Entries</h2>
+                        <table id="membershipTable">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>WhatsApp</th>
+                                    <th>Membership Date</th>
+                                    <th>Expiry Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody">
+                                ${data.slice(-10).map(entry => `
+                                <tr>
+                                    <td>${entry.id}</td>
+                                    <td>${entry.name}</td>
+                                    <td>${entry.gmail}</td>
+                                    <td>${entry.whatsapp}</td>
+                                    <td>${entry.membership_date}</td>
+                                    <td>${entry.expiry}</td>
+                                </tr>`).join('')}
+                            </tbody>
+                        </table>
+                         <h2 style="color: rgb(116, 30, 255);" id="entry">Membership Entries</h2>
+                        <table id="membershipTable">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>WhatsApp</th>
+                                    <th>Membership Date</th>
+                                    <th>Expiry Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody">
+                                ${data.map(entry => `
+                                <tr>
+                                    <td>${entry.id}</td>
+                                    <td>${entry.name}</td>
+                                    <td>${entry.gmail}</td>
+                                    <td>${entry.whatsapp}</td>
+                                    <td>${entry.membership_date}</td>
+                                    <td>${entry.expiry}</td>
+                                </tr>`).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </body>
+            </html>
+            `,
+            attachments: [
+                {
+                    filename: `${process.env.gymName}.json`,
+                    content: jsonData,
+                    contentType: 'application/json'
+                }
+            ],
+        });
+
+        console.log("Message sent: %s", info.messageId);
+
+    } catch (error) {
+        console.error("Error sending email:", error);
+    }
+}
+
+
+async function reminderExpiry(toMail,name,expiry) {
+    
     const transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
     port: 465,
@@ -324,21 +532,102 @@ let today = date.getFullYear()+":"+date.getMonth()+":"+date.getDate();
   // send mail with defined transport object
   const info = await transporter.sendMail({
     from: process.env.email, 
-    to: "azimuddenk@gmail.com", 
-    subject: "Important Notice", 
-    text: `The ${process.env.gymName} Gym - ${today}`, 
-    html: `<h1>The ${process.env.gymName} Gym - ${today}</h1>`, 
-    attachments: [
-        {
-            filename: '${process.env.gymName}.json',
-            content: jsonData,
-            contentType: 'application/json'
+    to: toMail, 
+    subject: `Important Notice from ${process.env.gymName}`, 
+    text: `Dear ${name}`, 
+    html: `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Membership Expiry Reminder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
         }
-    ],
+
+        .reminder-container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 500px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .reminder-header {
+            background-color: #ff6b6b;
+            color: white;
+            padding: 15px;
+            border-radius: 10px 10px 0 0;
+            font-size: 1.5em;
+        }
+
+        .reminder-content {
+            padding: 20px;
+        }
+
+        .reminder-content p {
+            font-size: 1.1em;
+            line-height: 1.5;
+        }
+
+        .cta-button {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            background-color: #e55a5a;
+        }
+
+        .footer-note {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="reminder-container">
+        <div class="reminder-header">
+            Membership Expiry Reminder
+        </div>
+        <div class="reminder-content">
+            <p>Dear ${name},</p>
+            <p>We hope you have been enjoying your time at our gym. We wanted to remind you that your gym membership is set to expire on <strong>${expiry}</strong>. To continue enjoying access to our facilities, please renew your membership before the expiry date.</p>
+            <a href="#" class="cta-button">Renew Now</a>
+            <p class="footer-note">Thank you for being a valued member of our community. If you have any questions, please contact us at <a href="mailto:support@gym.com">support@gym.com</a>.</p>
+        </div>
+    </div>
+</body>
+</html>
+`
+   
   });
-//   console.log("Message sent: %s", info.messageId);
+  console.log("Message sent: %s", info.messageId);
 
 }
 
 
-module.exports = {main,expAlert,backup};
+
+// reminder("azimkarimrahim@gmail.com","azim khan","1-1-2002")
+module.exports = {main,expAlert,backup,reminderExpiry};

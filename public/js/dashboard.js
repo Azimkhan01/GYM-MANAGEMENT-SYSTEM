@@ -44,6 +44,45 @@ function getPrice(r){
     return price
 }
 
+function isMembershipExpiringSoon(expiryDate) {
+    // Parse the expiry date string into a Date object
+    const expiryDateObj = new Date(expiryDate);
+
+    // Check if the expiry date is a valid date
+    if (isNaN(expiryDateObj.getTime())) {
+        console.error('Invalid expiry date');
+        return false;
+    }
+
+    // Get the current date
+    const currentDate = new Date();
+
+    // Calculate the difference in time between the expiry date and current date
+    const timeDifference = expiryDateObj - currentDate;
+
+    // Calculate the difference in days
+    const daysDifference = timeDifference / (1000 * 60 * 60 * 24);
+
+    // Check if the expiry is within 3 days
+    if (daysDifference <= 3 && daysDifference >= 0) {
+        return true;
+    }
+
+    // Check if the expiry date is within the current month
+    const currentMonth = currentDate.getMonth();
+    const currentYear = currentDate.getFullYear();
+
+    const expiryMonth = expiryDateObj.getMonth();
+    const expiryYear = expiryDateObj.getFullYear();
+
+    if (expiryMonth === currentMonth && expiryYear === currentYear) {
+        return true;
+    }
+
+    // If neither condition is met, return false
+    return false;
+}
+
 
 fetch("http://127.0.0.1:8000/memberApi")
     .then(data => data.json())
@@ -376,4 +415,46 @@ entryCount.addEventListener("input",(e)=>{
         }
         
     })
+});
+let copy = document.getElementById("copy")
+copy.style.display = "none"
+let getWhatsappReminder = document.getElementById("getWhatsappReminder")
+getWhatsappReminder.addEventListener("click",(e)=>{
+copy.style.display = "inline"
+fetch("http://127.0.0.1:8000/memberApi").then(data=>data.json()).then((r)=>{
+        
+    let arr = []
+        for(i=0;i<r.length;i++)
+        {
+         if(isMembershipExpiringSoon(r[i]["expiry"])){
+             arr.push("+91"+r[i]["whatsapp"])
+         }
+        }
+        document.getElementById("reminderDisplay").innerHTML = arr.join(",");
 })
+});
+
+function copyIt() {
+    // Get the text element
+    copy.style.backgroundColor = "#333333"
+    var text = document.getElementById("reminderDisplay").innerText;
+    
+    // Create a temporary input element to copy the text
+    var tempInput = document.createElement("input");
+    tempInput.value = text;
+    document.body.appendChild(tempInput);
+    
+    // Select the text and copy it
+    tempInput.select();
+    document.execCommand("copy");
+    
+    // Remove the temporary input element
+    document.body.removeChild(tempInput);
+  
+    // Show feedback message
+    // document.getElementById("commaNumber").innerText = "Text copied to clipboard!";
+  
+    copy.style.display = "none"
+
+    document.getElementById("reminderDisplay").innerHTML = 'whatsapp number Copied to Clipboard';
+  }

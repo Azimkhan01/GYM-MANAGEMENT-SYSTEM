@@ -48,7 +48,8 @@ fetch("http://127.0.0.1:8000/memberApi")
                         <td>${v["membership_date"]}</td>
                         <td>${v["membership_duration"]}</td>
                         <td>${v["fees_paid"]}</td>
-                        <td>${v["expiry"]}</td>`;
+                        <td>${v["expiry"]}</td>
+                        <td>${v["offer"]}</td>`;
       tableBody.appendChild(tr);
     });
   });
@@ -72,7 +73,8 @@ filter.addEventListener("change", (e) => {
                         <td>${v["membership_date"]}</td>
                         <td>${v["membership_duration"]}</td>
                         <td>${v["fees_paid"]}</td>
-                        <td>${v["expiry"]}</td>`;
+                        <td>${v["expiry"]}</td>
+                        <td>${v["offer"]}</td>`;
           tableBody.appendChild(tr);
         });
       });
@@ -99,7 +101,9 @@ filter.addEventListener("change", (e) => {
                     <td>${v["membership_date"]}</td>
                     <td>${v["membership_duration"]}</td>
                     <td>${v["fees_paid"]}</td>
-                    <td>${v["expiry"]}</td>`;
+                    <td>${v["expiry"]}</td>
+                        <td>${v["offer"]}</td>`;
+                    ;
 
             tableBody.appendChild(tr);
           }
@@ -141,3 +145,8 @@ function getExpiredList() {
     });
 }
 
+document.getElementById('sendMail').addEventListener('click', function() {
+  document.getElementById("sendMail").style.backgroundColor = 'tomato'
+  document.getElementById("sendMail").innerHTML = "Sending please wait...."
+  // Add your actual reminder sending logic here
+});

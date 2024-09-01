@@ -10,6 +10,7 @@ const { handleRemove } = require("../controller/handleremove");
 const { view } = require("../controller/view");
 const { handleView } = require("../controller/handleView");
 const { dashboard } = require("../controller/dashboard");
+const { handleDashboard } = require("../controller/handleDashboard");
 const { memberApi } = require("../controller/memberApi");
 const router = express.Router();
 
@@ -17,6 +18,7 @@ const router = express.Router();
 router.route("/").get(admin);
 router.route("/").post(handleAdmin);
 router.route("/dashboard").get(dashboard);
+router.route("/dashboard").post(handleDashboard);
 router.route("/insert").get(insert);
 router.route("/insert").post(handleInsert);
 router.route("/update").get(update);

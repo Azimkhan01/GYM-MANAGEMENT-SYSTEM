@@ -11,6 +11,59 @@ body {
     overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
+/* WhatsApp Reminder Button Styling */
+.whatsapp-reminder-container {
+    overflow-x: auto;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.whatsapp-button {
+    color: #e0e0e0; /* Light text color */
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #25d366; /* WhatsApp green color */
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    display: inline-block;
+    text-align: center;
+}
+
+.whatsapp-button:hover {
+    background-color: #20b958; /* Slightly darker green on hover */
+    transform: scale(1.05);
+}
+
+
+
+/* Styling for the Send Reminder button */
+.reminder-button-container {
+    text-align: center;
+    margin-bottom: 20px;
+    
+}
+
+.action-button {
+    color: #e0e0e0; /* Light text color */
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #0074BA; /* Medium grey background for links and buttons */
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    display: inline-block;
+    text-align: center;
+}
+
+.action-button:hover {
+    background-color: #555; /* Slightly lighter grey on hover */
+    transform: scale(1.05);
+}
+
+
 .container {
     margin-top: 2%;
     margin-left: 18%;
