@@ -13,6 +13,24 @@ body {
 /* Add this CSS to your existing stylesheet */
 
 /* Styling for the top information container */
+
+.passport {
+    width: 100px; /* Fixed width for passport size */
+    height: 120px; /* Fixed height for passport size */
+    object-fit: cover; /* Ensures the image fits within the given dimensions */
+    border-radius: 10px; /* Adds rounded corners */
+    border: 2px solid #000000; /* Adds a light blue border for contrast */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+/* Hover effect */
+.passport:hover {
+    transform: scale(1.1); /* Slightly enlarges the image on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8); /* Deepens the shadow on hover */
+    border-color: #0288d1; /* Darker blue border on hover */
+}
+
 .top-info-container {
     margin-top: 2%;
     margin-left: 10%;

@@ -34,7 +34,7 @@ for (let i = 1; i <= 1000; i++) {
     const expiry = getRandomDate(membershipDate, "2025-12-31");
     const feesPaid = getRandomFees();
     const offer = getRandomOffer();
-    const image = '/public/image/vyne-1.jpg';
+    const image = '/public/image/jp-1.jpg';
 
     const entry = {
         id: `${process.env.gymName}-${i}`,
