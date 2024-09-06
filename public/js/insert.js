@@ -21,3 +21,11 @@ whatsapp.addEventListener("change", (e) => {
       }
     });
 });
+
+
+
+  let submit  = document.getElementById("submit")
+  submit.addEventListener("click",(e)=>{
+    submit.textContent = "Adding Member ..."
+    submit.style.backgroundColor = "tomato"
+  })

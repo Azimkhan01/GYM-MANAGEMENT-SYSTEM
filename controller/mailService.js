@@ -207,13 +207,12 @@ async function expAlert(name,date,duration,expiry,mail) {
         border-radius: 12px;
         max-width: 600px;
         width: 90%;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         padding: 20px;
         margin: 20px;
         text-align: center;
         color: #333;
         position: relative;
-        animation: bounceIn 1s ease-in-out;
     }
     .greeting-container img {
         width: 100%;
@@ -227,7 +226,6 @@ async function expAlert(name,date,duration,expiry,mail) {
         margin-bottom: 20px;
         font-size: 24px;
         font-weight: bold;
-        animation: shake 1s ease-in-out;
     }
     p {
         font-size: 16px;
@@ -241,33 +239,6 @@ async function expAlert(name,date,duration,expiry,mail) {
         color: #ffab00; /* Warm yellow */
         font-weight: bold;
     }
-    .greeting-container::before {
-        content: "🎉";
-        font-size: 40px;
-        color: #0288d1; /* Deep blue */
-        position: absolute;
-        top: 10px;
-        left: 10px;
-    }
-
-    /* Animation Definitions */
-    @keyframes bounceIn {
-        from {
-            opacity: 0;
-            transform: scale(0.9);
-        }
-        to {
-            opacity: 1;
-            transform: scale(1);
-        }
-    }
-
-    @keyframes shake {
-        0% { transform: translateX(-10px); }
-        50% { transform: translateX(10px); }
-        100% { transform: translateX(0); }
-    }
-
     /* Responsive Styles */
     @media (max-width: 600px) {
         .greeting-container {
@@ -286,7 +257,7 @@ async function expAlert(name,date,duration,expiry,mail) {
 <body>
 <div class="greeting-container">
     <img src="https://t4.ftcdn.net/jpg/00/99/82/15/360_F_99821575_nVEHTBXzUnTcLIKN6yOymAWAnFwEybGb.jpg" alt="Gym Image">
-    <h2>Welcome to The {process.env.gymName} Gym!</h2>
+    <h2>Welcome to The ${process.env.gymName} Gym!</h2>
     <p>Dear <span class="highlight">${name}</span>,</p>
     <p>Thank you for choosing <strong>The ${process.env.gymName} Gym</strong> as your fitness partner. We are thrilled to have you with us!</p>
     <p>Here are the details of your membership:</p>
@@ -295,11 +266,12 @@ async function expAlert(name,date,duration,expiry,mail) {
     <p><strong>Duration:</strong> <span class="highlight">${duration}</span></p>
     <p><strong>Start Date:</strong> <span class="highlight">${date}</span></p>
     <p><strong>Expiry Date:</strong> <span class="highlight">${expiry}</span></p>
-    <p>We are committed to providing you with the best fitness experience. If you have any questions or need assistance, please do not hesitate to contact us at <strong>info@process.env.gymNamegym.com</strong>.</p>
+    <p>We are committed to providing you with the best fitness experience. If you have any questions or need assistance, please do not hesitate to contact us at <strong>info@${process.env.gymName}.com</strong>.</p>
     <p>Welcome aboard, and here's to your fitness journey!</p>
 </div>
 </body>
 </html>
+
 `, // html body
   });
 
@@ -338,98 +310,91 @@ async function backup(data) {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>Gym Management System</title>
                 <style>
-                    /* Reset some default styles */
-                    body, h1, h2, h3, p {
-                        margin: 0;
-                        padding: 0;
-                        box-sizing: border-box;
-                    }
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        padding: 0;
+        margin: 0;
+    }
 
-                    /* Basic styling */
-                    body {
-                        font-family: Arial, sans-serif;
-                        background-color: #f4f4f4;
-                        color: #333;
-                        padding: 0;
-                        margin: 0;
-                    }
+    .container {
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 1200px;
+        background-color: #fff;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+    }
 
-                    /* Container styling */
-                    .container {
-                        padding: 20px;
-                        margin: 20px auto;
-                        max-width: 1200px;
-                        background-color: #fff;
-                        border-radius: 8px;
-                        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-                    }
+    .header-info {
+        background-color: #007BFF;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        border-radius: 8px 8px 0 0;
+        margin-bottom: 20px;
+    }
 
-                    /* Header info */
-                    .header-info {
-                        background-color: #007BFF;
-                        color: white;
-                        padding: 15px;
-                        border-radius: 8px;
-                        text-align: center;
-                        margin-bottom: 20px;
-                    }
-                    .header-info h1 {
-                        margin: 0;
-                        font-size: 24px;
-                    }
+    .header-info h1 {
+        margin: 0;
+        font-size: 24px;
+    }
 
-                    /* Stats container */
-                    .stats-container {
-                        display: flex;
-                        flex-wrap: wrap;
-                        gap: 20px;
-                        justify-content: center;
-                    }
-                    .stats-box {
-                        background-color: #e9ecef;
-                        padding: 15px;
-                        border-radius: 8px;
-                        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-                        flex: 1;
-                        max-width: 300px;
-                        text-align: center;
-                    }
-                    .stats-box h3 {
-                        margin-bottom: 10px;
-                        font-size: 18px;
-                    }
-                    .stats-box p {
-                        font-size: 16px;
-                        font-weight: bold;
-                    }
+    .stats-container {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
 
-                    .graph-container canvas {
-                        width: 100%;
-                        max-width: 700px;
-                        border-radius: 8px;
-                    }
-                    .additional-sections {
-                        margin-top: 20px;
-                    }
-                    .additional-sections table {
-                        width: 100%;
-                        border-collapse: collapse;
-                        margin-top: 20px;
-                        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-                    }
-                    .additional-sections th, .additional-sections td {
-                        padding: 10px;
-                        text-align: left;
-                        border-bottom: 1px solid #ddd;
-                    }
-                    .additional-sections th {
-                        background-color: #007BFF;
-                        color: white;
-                    }
-                    .additional-sections tr:hover {
-                        background-color: #f1f1f1;
-                    }
-                </style>
+    .stats-box {
+        background-color: #e9ecef;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        flex: 1;
+        max-width: 300px;
+    }
+
+    .stats-box h3 {
+        margin-bottom: 10px;
+        font-size: 18px;
+    }
+
+    .stats-box p {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #007BFF;
+        color: white;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    .additional-sections h2 {
+        color: #7420FF;
+        margin-top: 20px;
+    }
+</style>
+
             </head>
             <body>
                 <div class="container">
@@ -541,85 +506,49 @@ async function reminderExpiry(toMail,name,expiry) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gym Membership Expiry Reminder</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color: #333;
-        }
-
-        .reminder-container {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 90%;
-            max-width: 500px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .reminder-header {
-            background-color: #ff6b6b;
-            color: white;
-            padding: 15px;
-            border-radius: 10px 10px 0 0;
-            font-size: 1.5em;
-        }
-
-        .reminder-content {
-            padding: 20px;
-        }
-
-        .reminder-content p {
-            font-size: 1.1em;
-            line-height: 1.5;
-        }
-
-        .cta-button {
-            background-color: #ff6b6b;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1em;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 20px;
-        }
-
-        .cta-button:hover {
-            background-color: #e55a5a;
-        }
-
-        .footer-note {
-            margin-top: 20px;
-            font-size: 0.9em;
-            color: #777;
-        }
-    </style>
 </head>
-<body>
-    <div class="reminder-container">
-        <div class="reminder-header">
-            Membership Expiry Reminder
-        </div>
-        <div class="reminder-content">
-            <p>Dear ${name},</p>
-            <p>We hope you have been enjoying your time at our gym. We wanted to remind you that your gym membership is set to expire on <strong>${expiry}</strong>. To continue enjoying access to our facilities, please renew your membership before the expiry date.</p>
-            <a href="#" class="cta-button">Renew Now</a>
-            <p class="footer-note">Thank you for being a valued member of our community. If you have any questions, please contact us at <a href="mailto:support@gym.com">support@gym.com</a>.</p>
-        </div>
-    </div>
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f9; color: #333;">
+
+    <!-- Email container -->
+    <table width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #f4f4f9; padding: 20px 0;">
+        <tr>
+            <td align="center">
+
+                <!-- Inner container -->
+                <table width="90%" max-width="600px" cellspacing="0" cellpadding="0" border="0" style="background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px;">
+                    <tr>
+                        <td style="background-color: #4a90e2; color: white; text-align: center; padding: 20px; font-size: 24px; font-weight: bold; border-radius: 10px 10px 0 0;">
+                            Membership Expiry Reminder
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 20px; text-align: left; color: #333; font-size: 16px; line-height: 1.6;">
+                            <p>Dear <strong>${name}</strong>,</p>
+                            <p>We hope you have been enjoying your time at our gym. This is a reminder that your gym membership will expire on <strong>${expiry}</strong>.</p>
+                            <p>To avoid any interruption in access to our facilities, we encourage you to renew your membership before the expiry date.</p>
+                            <p>We look forward to continuing to help you reach your fitness goals!</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" style="padding: 20px;">
+                            <a href="#" style="background-color: #4a90e2; color: white; text-decoration: none; padding: 12px 30px; font-size: 16px; border-radius: 5px;">Renew Now</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 20px; text-align: center; font-size: 14px; color: #777;">
+                            <p>For any questions, feel free to contact us at <a href="mailto:support@gym.com" style="color: #4a90e2; text-decoration: none;">support@gym.com</a>.</p>
+                            <p>Thank you for being a valued member of our gym community.</p>
+                        </td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+    </table>
+
 </body>
 </html>
+
 `
    
   });
