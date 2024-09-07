@@ -63,8 +63,11 @@ function isMembershipExpiringSoon(expiryDate) {
     // Calculate the difference in days
     const daysDifference = timeDifference / (1000 * 60 * 60 * 24);
 
-    // Check if the expiry is within 3 days
-    if (daysDifference <= 3 && daysDifference >= 0) {
+    // Check if the expiry is within 30, 15, 10, or 3 days
+    if ((daysDifference <= 30 && daysDifference >= 0) || 
+        (daysDifference <= 15 && daysDifference >= 0) || 
+        (daysDifference <= 10 && daysDifference >= 0) || 
+        (daysDifference <= 3 && daysDifference >= 0)) {
         return true;
     }
 
@@ -82,6 +85,7 @@ function isMembershipExpiringSoon(expiryDate) {
     // If neither condition is met, return false
     return false;
 }
+
 
 
 fetch("http://127.0.0.1:8000/memberApi")
