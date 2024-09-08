@@ -29,10 +29,12 @@ body {
     transition: background-color 0.3s, transform 0.3s;
     display: inline-block;
     text-align: center;
+    font-weight: 700;
+    font-size: 16px;
 }
 
 .whatsapp-button:hover {
-    background-color: #20b958; /* Slightly darker green on hover */
+    background-color: #20b95871; /* Slightly darker green on hover */
     transform: scale(1.05);
 }
 
@@ -151,8 +153,8 @@ body {
     flex-wrap: wrap;
 }
 
-.stats-box {
-    background: #ffffff; /* White background */
+.stats-box {margin: 1%;
+    color: whitesmoke;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 20px;
@@ -161,6 +163,7 @@ body {
     min-width: 200px; /* Ensures boxes are not too small */
     max-width: 300px;
     margin-bottom: 20px;
+    backdrop-filter: blur(100px);
 }
 
 #totalMembersBox {
@@ -182,13 +185,13 @@ body {
 .stats-box h3 {
     margin: 0;
     font-size: 1.25rem;
-    color: #333; /* Dark gray for headings */
+    color: #ffffff; /* Dark gray for headings */
 }
 
 .stats-box p {
     font-size: 1.75rem;
     margin: 0.5rem 0;
-    color: #555; /* Medium gray for numbers */
+    color: #ffffff; /* Medium gray for numbers */
 }
 
 /* Additional Sections Styling */
