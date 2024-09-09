@@ -47,7 +47,9 @@ memberSearchInput.addEventListener("input", (e) => {
       const results = data.filter(
         (item) =>
           item["name"].toLowerCase().includes(searchTerm) ||
-          item["whatsapp"].toLowerCase().includes(searchTerm)
+          item["whatsapp"].toLowerCase().includes(searchTerm) ||
+          item["id"].toLowerCase().includes(searchTerm) ||
+          item["membership_date"].toLowerCase().includes(searchTerm)
       );
 
       if (results.length != data.length) {
