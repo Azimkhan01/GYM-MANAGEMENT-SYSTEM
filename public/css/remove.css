@@ -1,22 +1,43 @@
-/* remove.css */
-
 /* General Body Styling */
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background-color: #1e1e1e; /* Very dark gray background */
-    color: #e0e0e0; /* Light gray text */
+    background-color: #1e1e1e;
+    color: #e0e0e0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Full viewport height */
+    height: 100vh;
 }
+
+a {
+    text-decoration: none;
+    color: #00bcd4;
+
+}
+
+/* Passport-Size Image Styling */
+.passport-image {
+    width: 100px;
+    /* Width of the passport photo */
+    height: 120px;
+    /* Height of the passport photo (aspect ratio of approx 4:5) */
+    border-radius: 4px;
+    /* Slightly rounded corners */
+    object-fit: cover;
+    /* Ensure the image covers the entire area without distortion */
+    border: 2px solid #555;
+    /* Optional border for aesthetics */
+    margin-bottom: 1rem;
+    /* Spacing below the image */
+}
+
 
 /* Container Styling */
 .container {
     width: 100%;
-    max-width: 600px;
-    background: #2a2a2a; /* Slightly lighter dark gray background */
+    max-width: 800px;
+    background: #2a2a2a;
     border-radius: 12px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
     padding: 2rem;
@@ -30,19 +51,19 @@ body {
 
 .logo p {
     font-size: 2rem;
-    color: #00bcd4; /* Bright cyan color */
+    color: #00bcd4;
     margin: 0;
     font-weight: bold;
 }
 
 /* Heading Styling */
 h2 {
-    color: #e0e0e0; /* Light gray text */
+    color: #e0e0e0;
     margin-bottom: 1.5rem;
     font-size: 1.8rem;
 }
 
-/* Search Section Styling */
+/* Search Section */
 .search-section {
     margin-bottom: 2rem;
     display: flex;
@@ -51,28 +72,31 @@ h2 {
 }
 
 /* Search Input and Button Styling */
-#searchInput {
+#searchInput,
+#memberSearchInput {
     width: 100%;
     max-width: 300px;
     padding: 0.75rem;
-    border: 1px solid #555; /* Darker border */
+    border: 1px solid #555;
     border-radius: 8px;
-    background: #3a3a3a; /* Slightly lighter gray */
-    color: #e0e0e0; /* Light gray text */
+    background: #3a3a3a;
+    color: #e0e0e0;
     font-size: 1rem;
     box-sizing: border-box;
     margin-bottom: 0.5rem;
 }
 
-#searchInput:focus {
-    border-color: #00bcd4; /* Cyan border on focus */
-    background: #4a4a4a; /* Slightly lighter gray on focus */
+#searchInput:focus,
+#memberSearchInput:focus {
+    border-color: #00bcd4;
+    background: #4a4a4a;
     outline: none;
 }
 
-#deleteButton {
-    background: #444; /* Dark gray background */
-    color: #e0e0e0; /* Light gray text */
+#deleteButton,
+#memberSearchButton {
+    background: #444;
+    color: #e0e0e0;
     border: none;
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
@@ -83,73 +107,47 @@ h2 {
     max-width: 300px;
 }
 
-#deleteButton:hover {
-    background: #555; /* Slightly lighter gray on hover */
+#deleteButton:hover,
+#memberSearchButton:hover {
+    background: #555;
     transform: scale(1.05);
 }
 
-/* Result Section Styling */
-.result-section {
+/* Membership Table Styling */
+.table-section {
+    overflow-x: auto;
     margin-top: 2rem;
-    color: #e0e0e0; /* Light gray text */
-    font-size: 1rem;
-    text-align: center;
+    margin-bottom: 2rem;
 }
 
-/* Membership Details Styling */
-#membershipDetails {
-    background: #2a2a2a; /* Slightly lighter dark gray */
-    border-radius: 8px;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #2a2a2a;
+    color: #e0e0e0;
+}
+
+thead th {
+    background-color: #444;
     padding: 1rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: left;
 }
 
-.passport-image {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 1rem;
+tbody td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #555;
 }
 
-#membershipDetails p {
-    margin: 0.5rem 0;
-}
-
-#membershipDetails strong {
-    color: #00bcd4; /* Bright cyan color */
-}
-
-/* Status Text Styling */
-#resultText {
-    font-size: 1.1rem;
-    color: #f44336; /* Red color for 'not found' status */
-}
-
-/* Back to Home Link Styling */
-.back-home {
-    margin-top: 2rem;
-}
-
-.back-home a {
-    color: #00bcd4; /* Bright cyan color */
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.back-home a:hover {
-    color: #0097a7; /* Darker cyan color on hover */
+tbody tr:hover {
+    background-color: #333;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    #searchInput {
-        font-size: 0.9rem;
-    }
 
-    #deleteButton {
+    #searchInput,
+    #memberSearchInput {
         font-size: 0.9rem;
     }
 
@@ -167,11 +165,9 @@ h2 {
 }
 
 @media (max-width: 480px) {
-    #searchInput {
-        font-size: 0.8rem;
-    }
 
-    #deleteButton {
+    #searchInput,
+    #memberSearchInput {
         font-size: 0.8rem;
     }
 
@@ -185,10 +181,5 @@ h2 {
 
     .logo p {
         font-size: 1.6rem;
-    }
-
-    .search-section {
-        flex-direction: column;
-        align-items: center;
     }
 }
