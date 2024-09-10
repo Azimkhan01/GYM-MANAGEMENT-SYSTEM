@@ -89,7 +89,7 @@ memberSearchInput.addEventListener("input", (e) => {
           item["membership_date"].toLowerCase().includes(searchTerm)
       );
 
-      if (results.length != data.length) {
+      if (results.length != data.length || results.length == 1 ) {
         let searchTable = document.getElementById("searchTable");
         searchTable.innerHTML = "";
         results.filter((value) => {
