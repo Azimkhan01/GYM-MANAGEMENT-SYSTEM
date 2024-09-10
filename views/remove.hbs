@@ -1,86 +1,76 @@
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Delete Membership</title>
-    <link rel="stylesheet" href="/public/css/remove.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delete Membership</title>
+  <link rel="stylesheet" href="/public/css/remove.css" />
+</head>
 
-  <body>
-    <div class="container">
-      <!-- Logo Section -->
-      <div class="logo">
-        <p>The {{gymName}} GYM</p>
-      </div>
+<body>
+  <!-- Main Container -->
+  <div class="main-container">
+    <!-- Logo Section -->
+    <div class="logo">
+      <p>The {{gymName}} GYM</p>
+       <!-- Back to Home Link -->
+    <div class="back-home">
+      <a href="/dashboard">Back to Home</a>
+    </div>
+    </div>
+   
 
+    <!-- Delete Membership Section -->
+    <div class="delete-container">
       <h2>Delete Membership</h2>
-
-      <!-- Search Section -->
       <div class="search-section">
         <form action="remove" method="post">
-          <input
-            type="text"
-            id="searchInput"
-            name="id"
-            value="{{gymName}}-"
-            placeholder="Enter {{gymName}} ID"
-          />
+          <input type="text" id="searchInput" name="id" value="{{gymName}}-" placeholder="Enter {{gymName}} ID" />
           <button id="deleteButton">Delete Membership</button>
         </form>
       </div>
-
-      <!-- Search Result Section -->
       <div id="resultSection" class="result-section"></div>
       <div>
         <p id="resultText2">{{status}}</p>
       </div>
+    </div>
 
-      <!-- Additional Search and Table Section -->
-      <div class="membership-search">
-        <h3 style="font-weight: 700;font-size: 22px;">Search Membership
-          Information</h3>
-        <div class="search-button-section">
-          <input
-            type="text"
-            id="memberSearchInput"
-            placeholder="Search member details..."
-          />
-          {{! <button id="memberSearchButton">Search</button> }}
-        </div>
-
-        <!-- Membership Details Table -->
-        <div class="table-section">
-          <table id="memberDetailsTable">
-            <thead>
-              <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Whatsapp</th>
-                <th>Date</th>
-                <th>Duration</th>
-                <th>Expiry</th>
-                <th>Fees</th>
-                <th>Note</th>
-              </tr>
-            </thead>
-            <tbody id="searchTable">
-              <tr>
-                <td>Result Here ...</td>
-              </tr>
-              <!-- More rows can be added here -->
-            </tbody>
-          </table>
-        </div>
+    <!-- Search Membership Section -->
+    <div class="search-container">
+      <h3 style="font-weight: 700; font-size: 22px;">Search Membership Information</h3>
+      <div class="search-button-section">
+        <input type="text" id="memberSearchInput" placeholder="Search member details..." />
+        {{! <button id="memberSearchButton">Search</button> }}
       </div>
 
-      <!-- Back to Home Link -->
-      <div class="back-home">
-        <a href="/dashboard">Back to Home</a>
+      <!-- Membership Details Table -->
+      <div class="table-section">
+        <table id="memberDetailsTable">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Whatsapp</th>
+              <th>Date</th>
+              <th>Duration</th>
+              <th>Expiry</th>
+              <th>Fees</th>
+              <th>Note</th>
+            </tr>
+          </thead>
+          <tbody id="searchTable">
+            <tr>
+              <td>Result Here ...</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
-    <script src="/public/js/remove.js"></script>
-  </body>
+    
+  </div>
+
+  <script src="/public/js/remove.js"></script>
+</body>
 
 </html>

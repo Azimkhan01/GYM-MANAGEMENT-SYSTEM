@@ -2,115 +2,142 @@
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background-color: #1e1e1e;
+    background-color: #121212;
     color: #e0e0e0;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     height: 100vh;
+    overflow-y: auto;
 }
 
 a {
     text-decoration: none;
     color: #00bcd4;
-
+    transition: color 0.3s;
 }
 
-/* Passport-Size Image Styling */
-.passport-image {
-    width: 100px;
-    /* Width of the passport photo */
-    height: 120px;
-    /* Height of the passport photo (aspect ratio of approx 4:5) */
-    border-radius: 4px;
-    /* Slightly rounded corners */
-    object-fit: cover;
-    /* Ensure the image covers the entire area without distortion */
-    border: 2px solid #555;
-    /* Optional border for aesthetics */
-    margin-bottom: 1rem;
-    /* Spacing below the image */
+a:hover {
+    color: #ffffff;
 }
 
-
-/* Container Styling */
-.container {
-    width: 100%;
-    max-width: 800px;
-    background: #2a2a2a;
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-    padding: 2rem;
+/* Main Container Styling */
+.main-container {
+    width: 90%;
+    /* max-width: 900px; */
+    background: #1e1e1e;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    padding: 2.5rem;
+    margin: 20px auto;
     text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
 }
 
-/* Logo Styling */
+/* Logo Section */
 .logo {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .logo p {
     font-size: 2rem;
+    font-weight: bold;
     color: #00bcd4;
     margin: 0;
-    font-weight: bold;
 }
 
-/* Heading Styling */
-h2 {
-    color: #e0e0e0;
+/* Delete Container */
+.delete-container {
+    width: 30%;
+    background-color: #2a2a2a;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.delete-container h2 {
+    color: #ffffff;
     margin-bottom: 1.5rem;
-    font-size: 1.8rem;
 }
 
-/* Search Section */
-.search-section {
-    margin-bottom: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Search Input and Button Styling */
-#searchInput,
-#memberSearchInput {
+#searchInput {
     width: 100%;
-    max-width: 300px;
+    max-width: 350px;
     padding: 0.75rem;
     border: 1px solid #555;
     border-radius: 8px;
     background: #3a3a3a;
     color: #e0e0e0;
-    font-size: 1rem;
-    box-sizing: border-box;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    transition: background 0.3s, border-color 0.3s;
+    font: bold;
 }
 
-#searchInput:focus,
-#memberSearchInput:focus {
+#searchInput:focus {
     border-color: #00bcd4;
     background: #4a4a4a;
     outline: none;
 }
 
-#deleteButton,
-#memberSearchButton {
-    background: #444;
-    color: #e0e0e0;
+#deleteButton {
+    background: white;
+    color: #ffffff;
     border: none;
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
     border-radius: 8px;
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.5s ease; /* Smooth color transition */
     width: 100%;
-    max-width: 300px;
+    max-width: 350px;
 }
 
-#deleteButton:hover,
-#memberSearchButton:hover {
-    background: #555;
+#deleteButton:disabled {
+    cursor: not-allowed;
+}
+
+#deleteButton:hover {
+    background: #0097a7;
     transform: scale(1.05);
+}
+
+/* Search Container */
+.search-container {
+    width: 100%;
+    background-color: #2a2a2a;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.search-container h3 {
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+}
+
+#memberSearchInput {
+    font: bold;
+    width: 100%;
+    max-width: 350px;
+    padding: 0.75rem;
+    border: 1px solid #555;
+    border-radius: 8px;
+    background: #3a3a3a;
+    color: #e0e0e0;
+    margin-bottom: 1rem;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+#memberSearchInput:focus {
+    border-color: #00bcd4;
+    background: #4a4a4a;
+    outline: none;
 }
 
 /* Membership Table Styling */
@@ -123,40 +150,83 @@ h2 {
 table {
     width: 100%;
     border-collapse: collapse;
-    background: #2a2a2a;
+    background: #1e1e1e;
     color: #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 thead th {
     background-color: #444;
     padding: 1rem;
     text-align: left;
+    color: #ffffff;
+    font-weight: 600;
 }
 
 tbody td {
     padding: 1rem;
     text-align: left;
     border-bottom: 1px solid #555;
+    color: #b3b3b3;
 }
 
 tbody tr:hover {
     background-color: #333;
 }
 
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Back to Home Link */
+.back-home {
+    margin-top: 2rem;
+}
+
+.back-home a {
+    font-size: 1rem;
+    color: #00bcd4;
+    transition: color 0.3s;
+}
+
+.back-home a:hover {
+    color: #ffffff;
+}
+
+/* Passport-Size Image Styling */
+.passport-image {
+    width: 100px; /* Width of the passport photo */
+    height: 120px; /* Height of the passport photo (aspect ratio of approx 4:5) */
+    border-radius: 8px; /* Slightly rounded corners */
+    object-fit: cover; /* Ensure the image covers the entire area without distortion */
+    border: 2px solid #555; /* Border for aesthetics */
+    margin-bottom: 1rem; /* Spacing below the image */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+}
+
+/* Hover effect */
+.passport-image:hover {
+    transform: scale(1.1); /* Slight zoom-in */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Enhance shadow on hover */
+}
+
+
 /* Responsive Design */
 @media (max-width: 768px) {
-
     #searchInput,
     #memberSearchInput {
         font-size: 0.9rem;
     }
 
-    .container {
+    .main-container {
         padding: 1.5rem;
     }
 
-    h2 {
-        font-size: 1.6rem;
+    .delete-container,
+    .search-container {
+        padding: 1.5rem;
     }
 
     .logo p {
@@ -165,18 +235,18 @@ tbody tr:hover {
 }
 
 @media (max-width: 480px) {
-
     #searchInput,
     #memberSearchInput {
         font-size: 0.8rem;
     }
 
-    .container {
+    .main-container {
         padding: 1rem;
     }
 
-    h2 {
-        font-size: 1.4rem;
+    .delete-container,
+    .search-container {
+        padding: 1rem;
     }
 
     .logo p {

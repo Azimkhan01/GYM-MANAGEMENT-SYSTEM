@@ -1,4 +1,42 @@
 let searchInput = document.getElementById("searchInput");
+let resultSection = document.getElementById("resultSection");
+let deleteButton = document.getElementById("deleteButton");
+
+// Initially disable the button and set the color
+deleteButton.disabled = true;
+deleteButton.style.backgroundColor = "tomato";
+
+// Function to start color animation
+function startButtonColorAnimation() {
+    let isTomato = true; // Track the current color
+
+    // Change color every 500ms
+    const intervalId = setTimeout(() => {
+        if (isTomato) {
+            deleteButton.style.backgroundColor = "black";
+        } else {
+            deleteButton.style.backgroundColor = "tomato";
+        }
+        isTomato = !isTomato; // Toggle the color
+    }, 250);
+
+    // Return the interval ID to allow stopping the animation later
+    return intervalId;
+}
+
+// Function to stop color animation
+function stopButtonColorAnimation(intervalId) {
+    clearInterval(intervalId);
+    deleteButton.style.backgroundColor = "tomato"; // Ensure it ends in tomato
+}
+
+// Start the animation
+const intervalId = startButtonColorAnimation();
+
+// Optionally, you can stop the animation later with stopButtonColorAnimation(intervalId)
+
+
+
 searchInput.addEventListener("input", (e) => {
   fetch("http://127.0.0.1:8000/memberApi")
     .then((data) => data.json())
@@ -6,8 +44,7 @@ searchInput.addEventListener("input", (e) => {
       for (i = 0; i < r.length; i++) {
         // console.log(e.target.value)
         if (r[i]["id"] == e.target.value) {
-          let resultSection = document.getElementById("resultSection");
-          let deleteButton = document.getElementById("deleteButton");
+          
           deleteButton.disabled = false;
           deleteButton.style.backgroundColor = "#444444";
           resultSection.innerHTML = `

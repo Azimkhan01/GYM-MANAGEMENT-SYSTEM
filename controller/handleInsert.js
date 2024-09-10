@@ -37,6 +37,11 @@ const handleInsert = async (req,res)=>{
     {
         let id = await  membership.countDocuments({}) + 1;
         id = process.env.gymName+"-"+id;
+
+        
+          //middleware of file upload  
+
+
         image = `/public/image/${id}.jpg`
         let expiry =await  getExpiry(membership_date,membership_duration);
         let insertMember = await  membership.create({id:id,name,whatsapp,gmail,membership_date,membership_duration,fees_paid,expiry:expiry,offer,image:image});

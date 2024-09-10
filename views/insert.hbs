@@ -10,7 +10,7 @@
     <div class="form-container">
         <a href="/dashboard" class="back-to-home">Back to Home</a>
         <h1>The {{gymName}} - Membership Form</h1>
-        <form action="/insert" method="POST">
+        <form action="/insert" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
@@ -20,7 +20,7 @@
                 <label for="whatsapp">WhatsApp Number:</label>
                 <input type="tel" id="whatsapp" name="whatsapp" required>
             </div>
- 
+
             <div class="form-group">
                 <label for="gmail">Gmail:</label>
                 <input type="email" id="gmail" name="gmail" required>
@@ -52,12 +52,18 @@
                 <input type="text" id="offer" name="offer">
             </div>
 
+            <!-- New File Upload Section -->
+            <div class="form-group">
+                <label for="file-upload">Upload Document:</label>
+                <input type="file" id="file-upload" name="uploaded_file" required>
+            </div>
+
             <div class="form-group" id="data_status">
                 <p style="color:{{color}}">{{status}}</p>
             </div>
 
             <div class="form-group">
-                <button type="submit" id="submit" >Submit</button>
+                <button type="submit" id="submit">Submit</button>
             </div>
         </form>
     </div>
