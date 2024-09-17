@@ -54,9 +54,11 @@
 
             <!-- New File Upload Section -->
             <div class="form-group">
-                <label for="file-upload">Upload Document:</label>
-                <input type="file" id="file-upload" name="uploaded_file" required>
-            </div>
+    <label for="file-upload" class="file-upload-label">Upload Document</label>
+    <input type="file" id="file-upload" name="uploaded_file" required>
+    <span id="file-upload-name" class="file-upload-name">No file selected</span>
+</div>
+
 
             <div class="form-group" id="data_status">
                 <p style="color:{{color}}">{{status}}</p>

@@ -111,6 +111,44 @@ h1 {
     font-size: 1.1rem;
 }
 
+
+/* File Upload Styling */
+#file-upload {
+    display: none; /* Hide the default file input */
+}
+
+/* Custom file upload button */
+.file-upload-label {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #444; /* Dark gray background */
+    color: #e0e0e0; /* Light gray text */
+    border: 1px solid #555; /* Slightly darker border */
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    text-align: center;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.file-upload-label:hover {
+    background-color: #555; /* Lighter gray on hover */
+    transform: scale(1.05); /* Slight scaling effect */
+}
+
+#file-upload:focus + .file-upload-label {
+    outline: 2px solid #00bcd4; /* Cyan outline when focused */
+}
+
+/* Show the selected file name */
+.file-upload-name {
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    color: #e0e0e0; /* Light gray text */
+    font-style: italic;
+}
+
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .form-container {

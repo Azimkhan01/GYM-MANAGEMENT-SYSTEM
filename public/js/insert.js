@@ -29,3 +29,12 @@ whatsapp.addEventListener("change", (e) => {
     submit.textContent = "Adding Member ..."
     submit.style.backgroundColor = "tomato"
   })
+
+
+  const fileInput = document.getElementById('file-upload');
+const fileNameDisplay = document.getElementById('file-upload-name');
+
+fileInput.addEventListener('change', function() {
+    const fileName = this.files[0]?.name || 'No file selected';
+    fileNameDisplay.textContent = fileName;
+});
