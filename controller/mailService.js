@@ -5,7 +5,7 @@ require("dotenv").config();
 
 
 // async..await is not allowed in global scope, must use a wrapper
-async function main(name,date,duration,expiry,mail) {
+async function expAlert(name,date,duration,expiry,mail) {
    
     const transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
@@ -166,7 +166,7 @@ async function main(name,date,duration,expiry,mail) {
 }
 
 
-async function expAlert(name,date,duration,expiry,mail) {
+async function main(name,date,duration,expiry,mail) {
    
     const transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
