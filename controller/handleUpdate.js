@@ -69,7 +69,7 @@ const handleUpdate = async (req, res) => {
     } else {
       res.render("update", {
         gymName: process.env.gymName,
-        status: `No changes were made to ${name}'s data`
+        status: `Changes Occur For ${name} Kindly Re-check In View Section `
       });
     }
   } catch (error) {
