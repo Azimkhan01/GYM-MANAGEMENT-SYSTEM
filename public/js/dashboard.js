@@ -38,7 +38,7 @@ function getPrice(r){
     let price = 0;
     for(i=0;i<r.length;i++)
     {
-        console.log(price)
+        // console.log(price)
         price += Number(r[i]["fees_paid"])
     }
     return price
@@ -88,7 +88,7 @@ function isMembershipExpiringSoon(expiryDate) {
 
 
 
-fetch("http://127.0.0.1:8000/memberApi")
+fetch(`${window.location.origin}/memberApi`)
     .then(data => data.json())
     .then(r => {
         let totalMembers = document.getElementById("totalMembers");
@@ -196,7 +196,7 @@ function categorizeMembership(member) {
       oneYear.push(member);
       break;
     default:
-      console.log('Unknown membership duration:', duration);
+    //   console.log('Unknown membership duration:', duration);
   }
 }
 
@@ -216,7 +216,7 @@ for(i=0;i<r.length;i++)
           "#e8c3b9",
           
         ];
-        console.log(r[0])
+        // console.log(r[0])
         // Create a glowing effect plugin for doughnut chart with purple glow
 Chart.plugins.register({
     beforeDraw: function(chartInstance) {
@@ -310,7 +310,7 @@ qValues = [
     Number(membershipCounts["December"]) 
  ];
 
-console.log(qValues)
+// console.log(qValues)
 const minY = Math.min(...qValues);
 const maxY = Math.max(...qValues);
 

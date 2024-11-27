@@ -35,7 +35,7 @@ sendMail.style.backgroundColor = "tomato";
 sendMail.disabled = false;
 let tableBody = document.getElementById("table_body");
 
-fetch("http://127.0.0.1:8000/memberApi")
+fetch(`${window.location.origin}/memberApi`)
   .then((data) => data.json())
   .then((r) => {
     r.map((v) => {
@@ -60,7 +60,7 @@ filter.addEventListener("change", (e) => {
     sendMail.disabled = true;
 
     tableBody.innerHTML = "";
-    fetch("http://127.0.0.1:8000/memberApi")
+    fetch(`${window.location.origin}/memberApi`)
       .then((data) => data.json())
       .then((r) => {
         r.map((v) => {
@@ -81,7 +81,7 @@ filter.addEventListener("change", (e) => {
   } else {
     tableBody.innerHTML = "";
 
-    fetch("http://127.0.0.1:8000/memberApi")
+    fetch(`${window.location.origin}/memberApi`)
       .then((data) => data.json())
       .then((r) => {
         r.sort((a, b) => new Date(a["expiry"]) - new Date(b["expiry"]));
@@ -118,7 +118,7 @@ document.getElementById("printButton").addEventListener("click", function () {
 
 function getExpiredList() {
   // Fetch data from the API and filter for expired memberships
-  fetch("http://127.0.0.1:8000/memberApi")
+  fetch(`${window.location.origin}/memberApi`)
     .then((data) => data.json())
     .then((r) => {
       let expiredList = []; // Correctly declare the expiredList array

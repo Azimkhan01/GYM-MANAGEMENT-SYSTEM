@@ -1,8 +1,4 @@
 require("dotenv").config()
-
-
-
-
 const dashboard = async (req,res)=>{
         let cookie = req.cookies["status"];
        

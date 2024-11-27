@@ -1,6 +1,6 @@
 let whatsapp = document.getElementById("whatsapp");
 whatsapp.addEventListener("change", (e) => {
-  fetch("http://127.0.0.1:8000/memberApi")
+  fetch(`${window.location.origin}/memberApi`)
     .then((data) => data.json())
     .then((r) => {
       for (i = 0; i < r.length; i++) {

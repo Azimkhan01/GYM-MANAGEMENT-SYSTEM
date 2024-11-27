@@ -9,7 +9,7 @@ let image = document.getElementById("image");
 let offer = document.getElementById("offer");
 
 whatsapp.addEventListener("change", (e) => {
-  fetch("http://127.0.0.1:8000/memberApi")
+  fetch(`${window.location.origin}/memberApi`)
     .then((data) => data.json())
     .then((r) => {
       let status = document.getElementById("status");
