@@ -1,8 +1,8 @@
-require("dotenv").config()
-const update = (req,res)=>{
-    res.render("update",{
-        gymName:process.env.gymName
-    })
-}
+require("dotenv").config();
+const update = (req, res) => {
+  res.render("update", {
+    gymName: process.env.gymName,
+  });
+};
 
-module.exports = {update};
+module.exports = { update };

@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gym Management System</title>
     <link rel="stylesheet" href="/public/css/dashboard.css">
 </head>
+
 <body>
-    <!-- Static Navbar Section -->
-    <nav class="navbar">
+    <!-- Navbar Section -->
+    <nav class="navbar" id="navbar">
+        {{!-- <div id="hamburger" class="hamburger">
+            <span style="font-size: 20px; font-weight: 700;">⫶</span>
+        </div> --}}
         <div class="navbar-logo">
             <h1>Gym Management System</h1>
             <h2 class="sponsor">{{gymName}}</h2>
         </div>
-        <ul class="navbar-links">
+        <ul id="navbar-link" class="navbar-links">
             <li><a href="/member" class="link">View Membership</a></li>
             <li><a href="/insert" class="link">Insert Member</a></li>
             <li><a href="/update" class="link">Update Member</a></li>
@@ -22,53 +27,58 @@
     </nav>
 
     <div class="container">
-        <!-- WhatsApp Reminder Button at the Top -->
-        <div  class="whatsapp-reminder-container">
-            <p id="reminderDisplay">Click on below button </p>
-        </div>
-        
-        <div class="whatsapp-reminder-container">
-            <button id="getWhatsappReminder" class="whatsapp-button">Get Reminder via WhatsApp</button>
-            <button id="copy" style="background-color: rgb(41, 39, 39);margin-left:10px" onclick="copyIt()"  class="whatsapp-button">copy</button>
-        </div>
+        <!-- WhatsApp Reminder Section -->
+        <section class="whatsapp-reminder-section">
+            <div class="whatsapp-reminder-container">
+                <p id="reminderDisplay">Click on the button below</p>
+            </div>
+            <div class="whatsapp-reminder-container">
+                <button id="getWhatsappReminder" class="whatsapp-button">Get Reminder via WhatsApp</button>
+                <button id="copy" class="whatsapp-button" style="background-color: rgb(41, 39, 39); margin-left: 10px;" onclick="copyIt()">Copy</button>
+            </div>
+        </section>
 
-        <!-- Send Reminder Button -->
-        <div class="reminder-button-container">
-            <form action="/dashboard" method="post">
+        <!-- Reminder Button Section -->
+        <section class="reminder-button-section">
+            <form action="/dashboard" id="sendReminderWhatsapp" method="post">
                 <button id="sendReminderButton" type="submit" class="action-button">Send Reminder</button>
             </form>
-        </div>
+        </section>
 
         <!-- Statistics Section -->
-        <div class="stats-container">
-            <div class="stats-box">
-                <h3>Total Members</h3>
-                <p id="totalMembers"></p>
+        <section class="stats-section">
+            <div class="stats-container">
+                <div class="stats-box">
+                    <h3>Total Members</h3>
+                    <p id="totalMembers"></p>
+                </div>
+                <div class="stats-box">
+                    <h3>Total Fees Paid</h3>
+                    <p>
+                        <span style="color: black;">Click here:</span>
+                        <span id="showFess" style="color: rgb(178, 227, 178);">Show revenue</span>
+                    </p>
+                    <p id="totalPrice"></p>
+                </div>
+                <div class="stats-box">
+                    <h3>Total Expiries</h3>
+                    <p id="totalExpiries"></p>
+                </div>
             </div>
-            <div class="stats-box">
-                <div><h3>Total Fees Paid</h3><span style="color: black;">Click here: </span><span id="showFess" style="color: rgb(178, 227, 178);">Show revenue</span></div>
-                <p id="totalPrice"></p>
-            </div>
-            <div class="stats-box">
-                <h3>Total Expiries</h3>
-                <p id="totalExpiries"></p>
-            </div>
-        </div>
+        </section>
 
-        <!-- Other content and charts -->
-        <div>
-            <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
-        </div>
-        <div>
-            <canvas id="myChart2" style="width:100%;max-width:700px"></canvas>
-        </div>
-        <div>
-            <canvas id="myChart3" style="width:100%;max-width:700px"></canvas>
-        </div>
-        <div>
+        <!-- Charts Section -->
+        <section class="charts-section">
+            <canvas id="myChart" style="width: 100%; max-width: 800px;"></canvas>
+            <canvas id="myChart2" style="width: 100%; max-width: 800px;"></canvas>
+            <canvas id="myChart3" style="width: 100%; max-width: 800px;"></canvas>
+        </section>
+
+        <!-- Membership Entries Section -->
+        <section class="membership-entries-section">
             <h2 style="color: rgb(116, 30, 255);" id="entry">Last 5 Membership Entries</h2>
             <label for="entryCount" style="color: #6a0dad; font-size: 16px;">Select number of entries to display:</label>
-            <input type="number" id="entryCount">
+            <input  placeholder="Enter Number Of Enteries You Want ?" type="number" id="entryCount">
             <table id="membershipTable">
                 <thead>
                     <tr>
@@ -81,24 +91,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Data will be inserted here -->
+                    <!-- Data will be dynamically inserted -->
                 </tbody>
             </table>
-        </div>
+        </section>
     </div>
 
-   
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="/public/js/dashboard.js"></script>
-    <script>
-        
-        document.getElementById('sendReminderButton').addEventListener('click', function() {
-            document.getElementById("sendReminderButton").style.backgroundColor = 'tomato'
-            document.getElementById("sendReminderButton").innerHTML = "Sending reminder please wait do not go back ...."
-           
-        });
-
-       
-    </script>
 </body>
+
 </html>

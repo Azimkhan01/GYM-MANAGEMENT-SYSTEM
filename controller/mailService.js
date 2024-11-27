@@ -2,20 +2,17 @@
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 
-
-
 // async..await is not allowed in global scope, must use a wrapper
-async function expAlert(name,date,duration,expiry,mail) {
-   
-    const transporter = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
+async function expAlert(name, date, duration, expiry, mail) {
+  const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
     port: 465,
     secure: true, // Use `true` for port 465, `false` for all other ports
-        auth: {
-          user: process.env.email,
-          pass: process.env.emailPass,
-        },
-      });
+    auth: {
+      user: process.env.email,
+      pass: process.env.emailPass,
+    },
+  });
   // send mail with defined transport object
   const info = await transporter.sendMail({
     from: process.env.email, // sender address
@@ -165,18 +162,16 @@ async function expAlert(name,date,duration,expiry,mail) {
   // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
 }
 
-
-async function main(name,date,duration,expiry,mail) {
-   
-    const transporter = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
+async function main(name, date, duration, expiry, mail) {
+  const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
     port: 465,
     secure: true, // Use `true` for port 465, `false` for all other ports
-        auth: {
-          user: process.env.email,
-          pass: process.env.emailPass,
-        },
-      });
+    auth: {
+      user: process.env.email,
+      pass: process.env.emailPass,
+    },
+  });
   // send mail with defined transport object
   const info = await transporter.sendMail({
     from: process.env.email, // sender address
@@ -279,30 +274,31 @@ async function main(name,date,duration,expiry,mail) {
   // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
 }
 
-
-
 async function backup(data) {
-    try {
-        let date = new Date();
-        let today = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
-        const jsonData = JSON.stringify(data, null, 2);
+  try {
+    let date = new Date();
+    let today = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(
+      2,
+      "0"
+    )}-${String(date.getDate()).padStart(2, "0")}`;
+    const jsonData = JSON.stringify(data, null, 2);
 
-        const transporter = nodemailer.createTransport({
-            host: 'smtp.gmail.com',
-            port: 465,
-            secure: true, // Use `true` for port 465, `false` for all other ports
-            auth: {
-                user: process.env.email,
-                pass: process.env.emailPass,
-            },
-        });
+    const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true, // Use `true` for port 465, `false` for all other ports
+      auth: {
+        user: process.env.email,
+        pass: process.env.emailPass,
+      },
+    });
 
-        const info = await transporter.sendMail({
-            from: process.env.email,
-            to: "azimuddenk@gmail.com",
-            subject: "Important Notice",
-            text: `The ${process.env.gymName} Gym - ${today}`,
-            html: `
+    const info = await transporter.sendMail({
+      from: process.env.email,
+      to: "azimuddenk@gmail.com",
+      subject: "Important Notice",
+      text: `The ${process.env.gymName} Gym - ${today}`,
+      html: `
             <!DOCTYPE html>
             <html lang="en">
             <head>
@@ -426,7 +422,10 @@ async function backup(data) {
                                 </tr>
                             </thead>
                             <tbody id="tableBody">
-                                ${data.slice(-10).map(entry => `
+                                ${data
+                                  .slice(-10)
+                                  .map(
+                                    (entry) => `
                                 <tr>
                                     <td>${entry.id}</td>
                                     <td>${entry.name}</td>
@@ -434,7 +433,9 @@ async function backup(data) {
                                     <td>${entry.whatsapp}</td>
                                     <td>${entry.membership_date}</td>
                                     <td>${entry.expiry}</td>
-                                </tr>`).join('')}
+                                </tr>`
+                                  )
+                                  .join("")}
                             </tbody>
                         </table>
                          <h2 style="color: rgb(116, 30, 255);" id="entry">Membership Entries</h2>
@@ -450,7 +451,9 @@ async function backup(data) {
                                 </tr>
                             </thead>
                             <tbody id="tableBody">
-                                ${data.map(entry => `
+                                ${data
+                                  .map(
+                                    (entry) => `
                                 <tr>
                                     <td>${entry.id}</td>
                                     <td>${entry.name}</td>
@@ -458,7 +461,9 @@ async function backup(data) {
                                     <td>${entry.whatsapp}</td>
                                     <td>${entry.membership_date}</td>
                                     <td>${entry.expiry}</td>
-                                </tr>`).join('')}
+                                </tr>`
+                                  )
+                                  .join("")}
                             </tbody>
                         </table>
                     </div>
@@ -466,40 +471,37 @@ async function backup(data) {
             </body>
             </html>
             `,
-            attachments: [
-                {
-                    filename: `${process.env.gymName}.json`,
-                    content: jsonData,
-                    contentType: 'application/json'
-                }
-            ],
-        });
+      attachments: [
+        {
+          filename: `${process.env.gymName}.json`,
+          content: jsonData,
+          contentType: "application/json",
+        },
+      ],
+    });
 
-        console.log("Message sent: %s", info.messageId);
-
-    } catch (error) {
-        console.error("Error sending email:", error);
-    }
+    console.log("Message sent: %s", info.messageId);
+  } catch (error) {
+    console.error("Error sending email:", error);
+  }
 }
 
-
-async function reminderExpiry(toMail,name,expiry) {
-    
-    const transporter = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
+async function reminderExpiry(toMail, name, expiry) {
+  const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
     port: 465,
     secure: true, // Use `true` for port 465, `false` for all other ports
-        auth: {
-          user: process.env.email,
-          pass: process.env.emailPass,
-        },
-      });
+    auth: {
+      user: process.env.email,
+      pass: process.env.emailPass,
+    },
+  });
   // send mail with defined transport object
   const info = await transporter.sendMail({
-    from: process.env.email, 
-    to: toMail, 
-    subject: `Important Notice from ${process.env.gymName}`, 
-    text: `Dear ${name}`, 
+    from: process.env.email,
+    to: toMail,
+    subject: `Important Notice from ${process.env.gymName}`,
+    text: `Dear ${name}`,
     html: `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -549,14 +551,10 @@ async function reminderExpiry(toMail,name,expiry) {
 </body>
 </html>
 
-`
-   
+`,
   });
   console.log("Message sent: %s", info.messageId);
-
 }
 
-
-
 // reminder("azimkarimrahim@gmail.com","azim khan","1-1-2002")
-module.exports = {main,expAlert,backup,reminderExpiry};
+module.exports = { main, expAlert, backup, reminderExpiry };

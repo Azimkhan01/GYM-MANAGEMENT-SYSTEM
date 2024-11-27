@@ -2,27 +2,27 @@ const { membership } = require("../database/registeredUser");
 require("dotenv").config();
 
 function getExpiry(startDate, duration) {
-    const start = new Date(startDate);
+  const start = new Date(startDate);
 
-    switch (duration) {
-        case '1-month':
-            start.setMonth(start.getMonth() + 1);
-            break;
-        case '3-months':
-            start.setMonth(start.getMonth() + 3);
-            break;
-        case '6-months':
-            start.setMonth(start.getMonth() + 6);
-            break;
-        case '1-year':
-            start.setFullYear(start.getFullYear() + 1);
-            break;
-        default:
-            return null;
-    }
+  switch (duration) {
+    case "1-month":
+      start.setMonth(start.getMonth() + 1);
+      break;
+    case "3-months":
+      start.setMonth(start.getMonth() + 3);
+      break;
+    case "6-months":
+      start.setMonth(start.getMonth() + 6);
+      break;
+    case "1-year":
+      start.setFullYear(start.getFullYear() + 1);
+      break;
+    default:
+      return null;
+  }
 
-    const expiryDate = start.toISOString().split('T')[0];
-    return expiryDate;
+  const expiryDate = start.toISOString().split("T")[0];
+  return expiryDate;
 }
 
 const handleUpdate = async (req, res) => {
@@ -41,7 +41,7 @@ const handleUpdate = async (req, res) => {
     if (!expiry_date) {
       res.render("update", {
         gymName: process.env.gymName,
-        status: `Invalid membership duration provided for ${name}`
+        status: `Invalid membership duration provided for ${name}`,
       });
       return;
     }
@@ -56,26 +56,26 @@ const handleUpdate = async (req, res) => {
         fees_paid: fees_paid,
         offer: offer,
         image: image,
-        expiry_date: expiry_date
+        expiry_date: expiry_date,
       }
     );
 
     if (data.nModified > 0) {
       res.render("update", {
         gymName: process.env.gymName,
-        color: 'green',
-        status: `Update of ${name} was committed successfully`
+        color: "green",
+        status: `Update of ${name} was committed successfully`,
       });
     } else {
       res.render("update", {
         gymName: process.env.gymName,
-        status: `Changes Occur For ${name} Kindly Re-check In View Section `
+        status: `Changes Occur For ${name} Kindly Re-check In View Section `,
       });
     }
   } catch (error) {
     res.render("update", {
       gymName: process.env.gymName,
-      status: `An error occurred during the update`
+      status: `An error occurred during the update`,
     });
   }
 };

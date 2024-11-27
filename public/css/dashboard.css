@@ -1,398 +1,321 @@
-/* General Body and Container Styling */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* General Body and Layout Styles */
+* {
     margin: 0;
     padding: 0;
-    background-color: #4f4f4f; /* Dark background */
-    color: #e0e0e0; /* Light text for contrast */
-    display: flex;
-    flex-direction: row; /* Ensure body elements flow horizontally */
-    height: 100vh;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    box-sizing: border-box;
 }
 
-/* WhatsApp Reminder Button Styling */
-.whatsapp-reminder-container {
-    overflow-x: auto;
-    text-align: center;
-    margin-bottom: 20px;
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1c1c1c; /* Dark Background */
+    color: #f4f4f4; /* Light Text */
 }
-
-.whatsapp-button {
-    color: #e0e0e0; /* Light text color */
-    text-decoration: none;
-    padding: 10px 20px;
-    background-color: #25d366; /* WhatsApp green color */
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    display: inline-block;
-    text-align: center;
-    font-weight: 700;
-    font-size: 16px;
-}
-
-.whatsapp-button:hover {
-    background-color: #20b95871; /* Slightly darker green on hover */
-    transform: scale(1.05);
-}
-
-
-
-/* Styling for the Send Reminder button */
-.reminder-button-container {
-    text-align: center;
-    margin-bottom: 20px;
-    
-}
-
-.action-button {
-    color: #e0e0e0; /* Light text color */
-    text-decoration: none;
-    padding: 10px 20px;
-    background-color: #0074BA; /* Medium grey background for links and buttons */
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    display: inline-block;
-    text-align: center;
-}
-
-.action-button:hover {
-    background-color: #555; /* Slightly lighter grey on hover */
-    transform: scale(1.05);
-}
-
 
 .container {
-    margin-top: 2%;
-    margin-left: 18%;
-    margin-right: 1.5%; /* Space between container and right edge */
-    width: calc(100% - 270px); /* Adjust to fill the rest of the space */
-    padding: 20px;
-    text-align: center;
-    background-color: #2c2a2a; /* White background */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    border-radius: 8px;
-    overflow-y: auto;
-    transition: margin-left 0.3s ease;
-     /* Smooth transition for margin */
+    width: 90%;
+    margin: 30px auto;
 }
 
-/* Navbar Styling */
+/* Header Styles */
+h1, h2, h3, h4, p {
+    font-family: 'Arial', sans-serif;
+}
+
+/* Navbar Styles */
 .navbar {
-    width: 250px;
-    background: #333; /* Dark grey background */
-    color: #e0e0e0; /* Light text color */
-    padding: 20px;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
     display: flex;
-    flex-direction: column;
-    z-index: 1000; /* Ensure navbar is always on top */
-    overflow-y: auto; /* Add scroll if content overflows */
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2e3b4e;
+    padding: 15px 60px;
+    color: white;
 }
 
 .navbar-logo h1 {
     margin: 0;
-    font-size: 22px;
-    font-weight: bold;
+    font-size: 24px;
 }
 
 .navbar-logo .sponsor {
-    margin: 5px 0 20px;
     font-size: 14px;
-    color: #03a9f4; /* Light blue accent color */
+    font-weight: 400;
 }
 
 .navbar-links {
     list-style: none;
-    padding: 0;
-    margin: 0;
-    flex-grow: 1;
+    display: flex;
 }
 
 .navbar-links li {
-    margin-bottom: 15px;
+    margin-left: 20px;
 }
 
-.navbar-links a,
-.action-button {
-    color: #e0e0e0; /* Light text color */
+.navbar-links .link {
     text-decoration: none;
-    padding: 10px 20px;
-    background-color: #444; /* Medium grey background for links and buttons */
-    border-radius: 5px;
-    transition: background-color 0.3s, transform 0.3s;
-    display: block;
-    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease;
 }
 
-.navbar-links a:hover,
-.action-button:hover {
-    background-color: #555; /* Slightly lighter grey on hover */
-    transform: scale(1.05);
+.navbar-links .link:hover {
+    color:  lightblue;
 }
 
-.action-button {
-    border: none;
+/* Hamburger Menu */
+.hamburger {
+    display: none;
     cursor: pointer;
-    width: 100%;
 }
 
-/* Stats Container Styling */
+.hamburger span {
+    color: white;
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+    .navbar{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 30px;
+    }
+    .navbar-logo{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    /* .navbar-links {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .hamburger {
+        display: block;
+    }
+    .navbar-links.active {
+        display: flex;
+    } */
+}
+
+#sendReminderWhatsapp
+{
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+/* WhatsApp Reminder Section */
+.whatsapp-reminder-section {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #2a2a2a; /* Dark background for reminder section */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+/* Align the WhatsApp reminder container to the left */
+.whatsapp-reminder-container {
+    display: flex;
+    overflow-x:auto ;
+    justify-content: center; /* Align to left */
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* WhatsApp Button Styles */
+.whatsapp-button {
+    background-color: #25D366;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.whatsapp-button:hover {
+    background-color: #128C7E;
+}
+
+/* Copy Button Styling */
+#copy {
+    background-color: rgb(41, 39, 39);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#copy:hover {
+    background-color: rgb(61, 59, 59);
+}
+
+/* Reminder Section Button Alignment */
+.whatsapp-reminder-container button {
+    margin-right: 15px; /* Add margin to separate the buttons */
+}
+
+/* Stats Section */
 .stats-container {
     display: flex;
     justify-content: space-between;
-    gap: 1rem;
-    flex-wrap: wrap;
+    margin-bottom: 30px;
 }
 
-.stats-box {margin: 1%;
-    color: whitesmoke;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.stats-box {
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #2a2a2a;
+    color: white;
     padding: 20px;
+    width: 30%;
+    border-radius: 8px;
     text-align: center;
-    flex: 1;
-    min-width: 200px; /* Ensures boxes are not too small */
-    max-width: 300px;
-    margin-bottom: 20px;
-    backdrop-filter: blur(100px);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-#totalMembersBox {
-    background: #4caf50; /* Green background */
+.stats-box h3, .stats-box p {
+    color: #f4f4f4;
 }
 
-#totalExpiriesBox {
-    background: #f44336; /* Red background */
-}
-
-#newMembersBox {
-    background: #ff9800; /* Orange background */
-}
-
-#activeMembersBox {
-    background: #2196f3; /* Blue background */
-}
-
-.stats-box h3 {
-    margin: 0;
-    font-size: 1.25rem;
-    color: #ffffff; /* Dark gray for headings */
-}
-
-.stats-box p {
-    font-size: 1.75rem;
-    margin: 0.5rem 0;
-    color: #ffffff; /* Medium gray for numbers */
-}
-
-/* Additional Sections Styling */
-.additional-sections {
-    margin-top: 20px;
-}
-
-.graph-container {
-    margin-top: 20px;
-    padding: 20px;
-    background: #292929; /* Dark background for graph section */
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.graph-placeholder {
-    background: #424242; /* Slightly lighter dark background for placeholder */
-    height: 200px; /* Placeholder height */
-    border-radius: 8px;
+/* Charts Section */
+.charts-section {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #888; /* Placeholder text color */
+    flex-direction: column;
+   justify-content: space-between;
+   align-items: center;
+    margin-bottom: 30px;
 }
 
-#myChart2,#myChart,#myChart3{
-    margin-top: 8%;
-    margin-left: 25%;
+canvas {
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Membership Entries Section */
+.membership-entries-section {
+    overflow-x: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #2a2a2a;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#entry {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 24px;
 }
 
 table {
-    color: #292929;
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    background-color: #ffffff; /* White background for the table */
-    overflow-x: auto; /* Add horizontal scroll for small screens */
+    overflow-x: auto;
 }
-th, td {
-    padding: 12px 15px;
-    border: 1px solid #dcdcdc; /* Light grey border */
+
+table th, table td {
+    padding: 12px;
     text-align: left;
-    white-space: nowrap; /* Prevent text wrapping */
+    border-bottom: 1px solid #ddd;
 }
-th {
-    background-color: #6a0dad; /* Violet header background */
-    color: #ffffff; /* White text color for header */
+
+table th {
+    background-color: #333;
+    color: white;
 }
-tr:nth-child(even) {
-    background-color: #f4f0fc; /* Light violet for even rows */
+
+table td {
+    background-color: #444;
 }
-tr:hover {
-    background-color: #e6e0f0; /* Lighter violet for hover effect */
+
+/* Input and Buttons */
+input[type="number"] {
+    padding: 8px;
+    font-size: 16px;
+    width: 100%;
+    /* max-width: 100px; Limit the max width for input */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
 }
+
+/* Action Button Styling */
+.action-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.action-button:hover {
+    background-color: #45a049;
+}
+/* Mobile Adjustments */
 @media (max-width: 768px) {
-    th, td {
-        padding: 8px 10px; /* Adjust padding for smaller screens */
-        font-size: 14px; /* Reduce font size for better fit */
-    }
-    table {
-        font-size: 14px; /* Adjust table font size */
-    }
-}
-@media (max-width: 480px) {
-    table {
-        width: 100%;
-        display: block; /* Enable block display to handle small screens */
-        overflow-x: auto; /* Horizontal scroll for very small screens */
-    }
-    th, td {
-        display: block;
-        text-align: right;
-        border: none; /* Remove border for block elements */
-    }
-    th {
-        background-color: #6a0dad; /* Violet background for header */
-        color: #ffffff; /* White text color */
-        padding: 10px;
-        text-align: left; /* Align header text to the left */
-    }
-    td {
-        position: relative;
-        padding: 10px 0;
-        border-top: 1px solid #dcdcdc; /* Add border on top for separation */
-        text-align: left; /* Align text to the left */
-    }
-    td::before {
-        content: attr(data-label); /* Display data label for each cell */
-        position: absolute;
-        left: 0;
-        width: 40%; /* Label width */
-        padding-left: 10px;
-        font-weight: bold;
-        background-color: #6a0dad; /* Violet background for labels */
-        color: #ffffff; /* White text color */
-        top: 0;
-        height: 100%;
-        line-height: 2em; /* Center text vertically */
-        white-space: nowrap; /* Prevent text wrapping */
-    }
-}
-/* Responsive Design */
-
-/* Tablets and Small Desktops */
-@media (max-width: 1024px) {
-    .container {
-        margin-right: 1.5%;
-        margin-left: 15%; /* Align with navbar width */
-        width: calc(100% - 270px); /* Fill remaining width */
-    }
-
-    .navbar {
-        width: 250px;
-        height: auto;
-    }
-}
-
-/* Large Mobile Phones and Tablets */
-@media (max-width: 768px) {
-    body {
-        flex-direction: column; /* Stack navbar and container vertically */
-    }
-
-    .container {
-        margin-left: 15%;
-        margin-right: 1.5%;
-        width: 100%;
-        padding: 20px;
-    }
-
-    .navbar {
-        width: 100%;
-        height: auto;
-        position: relative;
-        box-shadow: none;
-        padding-bottom: 0;
-    }
-
-    .navbar-links {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-    }
-
-    .navbar-links li {
-        margin-bottom: 10px;
-    }
-
     .stats-container {
-        
+        flex-direction: column;
+    }
+
+    .stats-box {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .charts-section {
         flex-direction: column;
         align-items: center;
+        gap: 30px;
     }
-
-    .stats-box {
-        width: 50%;
-        max-width: none; /* Allow full width for smaller screens */
-        margin-bottom: 1rem;
-    }
-
-    .graph-container {
+    
+    canvas {
+        height: 70vh; /* Adjust the height of the canvas to be larger */
         width: 100%;
-        padding: 20px;
+    }
+
+    .membership-entries-section {
+        margin-top: 30px;
+    }
+
+    /* Adjust input and action buttons for smaller screens */
+    input[type="number"] {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .whatsapp-reminder-container {
+        justify-content: center; /* Center the content on smaller screens */
+    }
+
+    .membership-entries-section{
+        gap: 10px;
+        align-items: center;
     }
 }
 
-/* Small Mobile Phones */
-@media (max-width: 480px) {
-    .navbar-logo h1 {
-        font-size: 1.5rem; /* Smaller font size for smaller screens */
-    }
-
-    .navbar-logo .sponsor {
-        font-size: 1rem; /* Adjust font size for smaller screens */
-    }
-
-    .stats-box h3 {
-        font-size: 1rem; /* Smaller font size for headings */
-    }
-
-    .stats-box p {
-        font-size: 1.5rem; /* Smaller font size for numbers */
-    }
-
-    .navbar-links a,
-    .action-button {
-        padding: 8px 16px; /* Smaller padding for links and buttons */
-    }
-
-    .stats-box {
-        width: 100%; /* Full width for very small screens */
-        padding: 15px;
-        margin-bottom: 1rem;
-    }
-
-    .container {
-        padding: 10px; /* Reduce padding for small screens */
-    }
-
-    .graph-placeholder {
-        height: 150px; /* Smaller placeholder height */
-    }
+h1{
+    font-family: inter,sans-serif;
 }
+p,a{
+    font-family: heebo,sans-serif;
+}
+

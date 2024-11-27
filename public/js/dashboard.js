@@ -1,3 +1,8 @@
+// let navbar = document.getElementById("navbar")
+// let hamburger = document.getElementById("hamburger")
+// hamburger.addEventListener("click",(e)=>{
+//     navbar.style.display = "none"
+// })
 function displayLastFiveEntries(entries) {
     const tableBody = document.getElementById('membershipTable').querySelector('tbody');
     tableBody.innerHTML = ''; // Clear any existing rows
@@ -113,8 +118,6 @@ fetch(`${window.location.origin}/memberApi`)
         }
          
        })
-
-
         let xValue = [];
         let barColors = [
             "#FF5733", "#33FF57", "#3357FF", "#F0F33F", "#FF33F6", "#33FFF0",
@@ -131,7 +134,6 @@ fetch(`${window.location.origin}/memberApi`)
         for (let i = 0; i < 12; i++) {
             xValue[i] = monthNames[i];
         }
-
         // Process dates
         let allDate = r.map(member => member.membership_date);
         let year = now.getFullYear();
@@ -145,14 +147,12 @@ fetch(`${window.location.origin}/memberApi`)
                 }
             }
         }
-
         // Adjust colors based on yValue
         for (let i = 0; i < yValue.length; i++) {
             if (yValue[i] < 5) {
                 barColors[i] = "tomato";
             }
         }
-
         // Create the chart
         new Chart("myChart", {
             type: "bar",
@@ -171,13 +171,10 @@ fetch(`${window.location.origin}/memberApi`)
                 }
             }
         });
-        
-
         const oneMonth= [];
 const threeMonths = [];
 const sixMonths = [];
 const oneYear = [];
-
 // Function to categorize membership
 function categorizeMembership(member) {
   const duration = member;
@@ -407,7 +404,7 @@ displayLastFiveEntries(lastFiveEntries);
 
 let entryCount = document.getElementById("entryCount")
 entryCount.addEventListener("input",(e)=>{
-    fetch("http://127.0.0.1:8000/memberApi").then(data=>data.json()).then((r)=>{
+    fetch(`${window.location.origin}/memberApi`).then(data=>data.json()).then((r)=>{
         
         if(e.target.value > 0 && e.target.value <=r.length)
         {
@@ -425,7 +422,7 @@ copy.style.display = "none"
 let getWhatsappReminder = document.getElementById("getWhatsappReminder")
 getWhatsappReminder.addEventListener("click",(e)=>{
 copy.style.display = "inline"
-fetch("http://127.0.0.1:8000/memberApi").then(data=>data.json()).then((r)=>{
+fetch(`${window.location.origin}/memberApi`).then(data=>data.json()).then((r)=>{
         
     let arr = []
         for(i=0;i<r.length;i++)
@@ -462,3 +459,4 @@ function copyIt() {
 
     document.getElementById("reminderDisplay").innerHTML = 'whatsapp number Copied to Clipboard';
   }
+  
